@@ -1,4 +1,6 @@
-import type { ExchangeRateCache, PricePoint } from '../types';
+import type { PricePoint } from '../types';
+
+export { fetchExchangeRates } from 'canada-acb';
 
 const CORS_PROXIES = [
   'https://corsproxy.io/?url=',
@@ -87,96 +89,4 @@ export async function fetchStockPrices(
   }
 
   return points;
-}
-
-// Bank of Canada Valet API — matches the Rust acb tool's exchange rate logic.
-// Pre-2017: IEXE0101 (noon rate, USD→CAD directly)
-// 2017+: FXCADUSD (indicative rate, CAD→USD, requires inversion)
-// CRA compliant per ITA s.261(1.4): use closest preceding business day if
-// no rate published for the transaction date.
-async function fetchBankOfCanadaRatesForYear(
-  year: number,
-): Promise<Record<string, number>> {
-  const isPre2017 = year < 2017;
-  const obsCode = isPre2017 ? 'IEXE0101' : 'FXCADUSD';
-  const url = `https://www.bankofcanada.ca/valet/observations/${obsCode}/json?start_date=${year}-01-01&end_date=${year}-12-31`;
-
-  const resp = await fetchWithCorsProxy(url);
-  const json = await resp.json();
-
-  const observations: Array<{ d: string; [key: string]: { v: string } | string }> =
-    json?.observations ?? [];
-
-  const rates: Record<string, number> = {};
-  for (const obs of observations) {
-    const dateStr = obs.d;
-    const valueObj = obs[obsCode];
-    if (!valueObj || typeof valueObj !== 'object' || !('v' in valueObj)) continue;
-    const rawValue = parseFloat(valueObj.v);
-    if (isNaN(rawValue) || rawValue <= 0) continue;
-
-    // Pre-2017 IEXE0101 is USD→CAD directly.
-    // 2017+ FXCADUSD is CAD→USD, so invert to get USD→CAD.
-    rates[dateStr] = isPre2017 ? rawValue : 1 / rawValue;
-  }
-
-  return rates;
-}
-
-export async function fetchExchangeRates(dates: string[]): Promise<ExchangeRateCache> {
-  if (dates.length === 0) return {};
-
-  // Group dates by year to minimize API calls
-  const yearSet = new Set<number>();
-  for (const date of dates) {
-    yearSet.add(parseInt(date.substring(0, 4), 10));
-  }
-
-  // Fetch rates for all needed years (plus adjacent years for lookback near boundaries)
-  const yearsToFetch = new Set(yearSet);
-  for (const y of yearSet) {
-    yearsToFetch.add(y - 1); // for lookback across year boundary
-  }
-
-  const allRates: Record<string, number> = {};
-  const fetchPromises = [...yearsToFetch].map(async (year) => {
-    try {
-      const yearRates = await fetchBankOfCanadaRatesForYear(year);
-      Object.assign(allRates, yearRates);
-    } catch {
-      // Individual year fetch failures are non-fatal
-    }
-  });
-  await Promise.all(fetchPromises);
-
-  // Resolve rates for each requested date using CRA-compliant backward lookup
-  const result: ExchangeRateCache = {};
-  for (const date of dates) {
-    const rate = findPrecedingRate(date, allRates);
-    if (rate !== null) {
-      result[date] = rate;
-    }
-  }
-
-  return result;
-}
-
-// CRA-compliant: look backward only, up to 7 days, for the closest preceding
-// business day with a published rate. Per ITA s.261(1.4).
-function findPrecedingRate(
-  targetDate: string,
-  ratesByDate: Record<string, number>,
-): number | null {
-  if (ratesByDate[targetDate]) return ratesByDate[targetDate];
-
-  const target = parseDateUTC(targetDate);
-
-  for (let offset = 1; offset <= 7; offset++) {
-    const d = new Date(target);
-    d.setUTCDate(d.getUTCDate() - offset);
-    const dateStr = formatDateUTC(d);
-    if (ratesByDate[dateStr]) return ratesByDate[dateStr];
-  }
-
-  return null;
 }

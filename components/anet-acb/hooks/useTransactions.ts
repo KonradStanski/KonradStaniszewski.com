@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
+import { buildNormalizedTransactions, collectTransactionDates } from 'canada-acb';
 import type {
   RawSellTransaction,
   RawVestEvent,
@@ -6,7 +7,6 @@ import type {
   NormalizedTransaction,
   ExchangeRateCache,
 } from '../types';
-import { isPreSplit, normalizeQuantity, normalizePrice } from '../lib/stockSplit';
 
 export function useTransactions() {
   const [sells, setSells] = useState<RawSellTransaction[]>([]);
@@ -55,101 +55,22 @@ export function useTransactions() {
   }, []);
 
   const normalized: NormalizedTransaction[] = useMemo(() => {
-    const all: NormalizedTransaction[] = [];
-
-    for (const vest of vests) {
-      const rate = exchangeRates[vest.vestDate] ?? null;
-      const fmvPerShare = vest.fmvPerShare;
-      const totalUsd = fmvPerShare * vest.vestedQty;
-
-      all.push({
-        id: `vest-${vest.grantNumber}-${vest.vestPeriod}`,
-        date: vest.vestDate,
-        settlementDate: vest.vestDate,
-        type: 'vest',
-        quantity: vest.vestedQty,
-        pricePerShareUsd: fmvPerShare,
-        totalUsd,
-        commissionUsd: 0,
-        feeUsd: 0,
-        exchangeRate: rate,
-        exchangeRateManual: false,
-        totalCad: rate !== null ? totalUsd * rate : null,
-        commissionCad: 0,
-        feeCad: 0,
-        source: vest.source,
-        preSplit: isPreSplit(vest.vestDate),
-      });
-    }
-
-    for (const espp of esppPurchases) {
-      const rate = exchangeRates[espp.purchaseDate] ?? null;
-      const qty = espp.purchasedQty;
-      const price = espp.purchasePrice;
-      const totalUsd = price * qty;
-
-      all.push({
-        id: `espp-${espp.purchaseDate}-${espp.purchasedQty}`,
-        date: espp.purchaseDate,
-        settlementDate: espp.purchaseDate,
-        type: 'espp_purchase',
-        quantity: qty,
-        pricePerShareUsd: price,
-        totalUsd,
-        commissionUsd: 0,
-        feeUsd: 0,
-        exchangeRate: rate,
-        exchangeRateManual: false,
-        totalCad: rate !== null ? totalUsd * rate : null,
-        commissionCad: 0,
-        feeCad: 0,
-        source: espp.source,
-        preSplit: isPreSplit(espp.purchaseDate),
-      });
-    }
-
-    for (const sell of sells) {
-      const rate = exchangeRates[sell.tradeDate] ?? null;
-      const preSplit = isPreSplit(sell.tradeDate);
-      const qty = preSplit ? normalizeQuantity(sell.quantity, sell.tradeDate) : sell.quantity;
-      const price = preSplit ? normalizePrice(sell.price, sell.tradeDate) : sell.price;
-
-      all.push({
-        id: `sell-${sell.tradeDate}-${sell.quantity}-${sell.price}-${sell.source}`,
-        date: sell.tradeDate,
-        settlementDate: sell.settlementDate,
-        type: 'sell',
-        quantity: qty,
-        pricePerShareUsd: price,
-        totalUsd: price * qty,
-        commissionUsd: sell.commission,
-        feeUsd: sell.fee,
-        exchangeRate: rate,
-        exchangeRateManual: false,
-        totalCad: rate !== null ? price * qty * rate : null,
-        commissionCad: rate !== null ? sell.commission * rate : null,
-        feeCad: rate !== null ? sell.fee * rate : null,
-        source: sell.source,
-        preSplit,
-      });
-    }
-
-    all.sort((a, b) => {
-      const dateCompare = a.date.localeCompare(b.date);
-      if (dateCompare !== 0) return dateCompare;
-      const typeOrder = { vest: 0, espp_purchase: 1, sell: 2 };
-      return typeOrder[a.type] - typeOrder[b.type];
-    });
-
-    return all;
+    return buildNormalizedTransactions(
+      {
+        sells,
+        vests,
+        esppPurchases,
+      },
+      exchangeRates,
+    );
   }, [sells, vests, esppPurchases, exchangeRates]);
 
   const allDates = useMemo(() => {
-    const dates = new Set<string>();
-    for (const tx of [...sells]) dates.add(tx.tradeDate);
-    for (const v of vests) dates.add(v.vestDate);
-    for (const e of esppPurchases) dates.add(e.purchaseDate);
-    return Array.from(dates).sort();
+    return collectTransactionDates({
+      sells,
+      vests,
+      esppPurchases,
+    });
   }, [sells, vests, esppPurchases]);
 
   const clearAll = useCallback(() => {
