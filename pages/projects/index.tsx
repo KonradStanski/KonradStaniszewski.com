@@ -23,6 +23,12 @@ const projects: Project[] = [
     githubUrl: "https://github.com/KonradStanski/KonradStaniszewski.com/tree/master/pages/anet-acb",
   },
   {
+    title: "Political Alignment Quiz",
+    description: "A personality-flavoured political quiz scored across ten axes and rendered as a d3 circular bar plot instead of a 2D compass",
+    liveUrl: "/projects/political-alignment",
+    githubUrl: "https://github.com/KonradStanski/KonradStaniszewski.com/tree/master/components/PoliticalQuiz.tsx",
+  },
+  {
     title: "Giduru",
     description: "",
     liveUrl: "https://app.giduru.com",

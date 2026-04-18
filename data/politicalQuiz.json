@@ -1,0 +1,129 @@
+{
+  "axes": [
+    {
+      "id": "altruism",
+      "label": "Altruism",
+      "poleA": "Generous",
+      "poleB": "Self-interested",
+      "description": "Generous vs. Self-interested. Measures the default direction of resource flow — whether a subject feels a prosocial pull to distribute beyond themselves and kin, or whether obligation contracts tightly around personal and in-group welfare."
+    },
+    {
+      "id": "loyaltyScope",
+      "label": "Loyalty Scope",
+      "poleA": "Familial",
+      "poleB": "Civic / Universal",
+      "description": "Familial vs. Civic/Universal. Whether moral obligation radiates outward from concrete kinship and blood ties, or attaches preferentially to abstract collectives like the nation-state, the civic order, or humanity in general."
+    },
+    {
+      "id": "ingroupBias",
+      "label": "Ethnic Ingroup Bias",
+      "poleA": "Ingroup-oriented",
+      "poleB": "Cosmopolitan",
+      "description": "Ingroup-oriented vs. Cosmopolitan. Whether shared ethnicity, ancestry, and culture form a legitimate axis of political solidarity and trust, or whether belonging should be predominantly chosen and culture-blind."
+    },
+    {
+      "id": "timePreference",
+      "label": "Time Preference",
+      "poleA": "Low Discount (Future / Capital)",
+      "poleB": "High Discount (Present / Consumption)",
+      "description": "High (Present/Consumption) vs. Low (Future/Capital Accumulation). Measures the willingness to sacrifice current utility for long-term or intergenerational structural stability — the subject's acceptable trade-off between current utility and future systemic fragility."
+    },
+    {
+      "id": "sovereignty",
+      "label": "Scope of Sovereignty",
+      "poleA": "Centralized Monolith",
+      "poleB": "Distributed Edge",
+      "description": "Centralized Monolith vs. Distributed Edge Autonomy. Maps the preference for top-down, standardized enforcement versus local, self-hosted governance and subsidiarity."
+    },
+    {
+      "id": "resources",
+      "label": "Resource Metaphysics",
+      "poleA": "Positive-sum",
+      "poleB": "Zero-sum",
+      "description": "Zero-Sum (Mercantilism/Scarcity) vs. Positive-Sum (Techno-capitalism/Abundance). Determines whether a subject views economic and social interactions strictly as extractive games or as generative networks."
+    },
+    {
+      "id": "risk",
+      "label": "Risk Epistemology",
+      "poleA": "Precautionary",
+      "poleB": "Proactionary",
+      "description": "Precautionary Principle vs. Proactionary Principle. Measures systemic risk tolerance — whether to halt progress to prevent theoretical tail-risk catastrophes, or to accelerate development to engineer solutions to them."
+    },
+    {
+      "id": "norms",
+      "label": "Normative Enforcement",
+      "poleA": "Guilt-driven",
+      "poleB": "Shame-driven",
+      "description": "Guilt-driven vs. Shame-driven. Differentiates between internalized moral frameworks (objective right/wrong irrespective of external observation) and externalized social frameworks (reputation, honor, face)."
+    },
+    {
+      "id": "authority",
+      "label": "Authority Epistemology",
+      "poleA": "Traditional / Heuristic",
+      "poleB": "Technocratic / Rationalist",
+      "description": "Heuristic (Tradition) vs. Technocratic (Rationalism). The preference for evolved, Chesterton's-fence social heuristics versus engineered, algorithmic optimization by domain experts."
+    },
+    {
+      "id": "ontology",
+      "label": "Ontological Focus",
+      "poleA": "Atomized Individual",
+      "poleB": "Institutional Node",
+      "description": "Atomized vs. Institutional. Does the subject derive terminal value from individual self-actualization, or as a functional node operating within a larger historical or social apparatus?"
+    }
+  ],
+  "questions": [
+    { "id": "alt1", "axis": "altruism", "direction": 1,  "text": "When I have more than I need, I feel a strong pull to share with people who have less." },
+    { "id": "alt2", "axis": "altruism", "direction": -1, "text": "It is reasonable to prioritize my own material gain over the welfare of strangers." },
+    { "id": "alt3", "axis": "altruism", "direction": 1,  "text": "I should personally give more to charitable causes than I currently do." },
+
+    { "id": "loy1", "axis": "loyaltyScope", "direction": 1,  "text": "My first obligations are to my family, even when they conflict with the wider community's interests." },
+    { "id": "loy2", "axis": "loyaltyScope", "direction": -1, "text": "I would accept personal sacrifice for the good of my country even if it hurt my family's prospects." },
+    { "id": "loy3", "axis": "loyaltyScope", "direction": 1,  "text": "Ancestry and kinship matter more than abstract social contracts." },
+
+    { "id": "ing1", "axis": "ingroupBias", "direction": 1,  "text": "People generally have more in common with members of their own ethnic or cultural group." },
+    { "id": "ing2", "axis": "ingroupBias", "direction": -1, "text": "Cultural and ethnic mixing enriches a society more than it threatens to erode it." },
+    { "id": "ing3", "axis": "ingroupBias", "direction": 1,  "text": "Shared ancestry is a legitimate basis for political solidarity." },
+
+    { "id": "tim1", "axis": "timePreference", "direction": 1,  "text": "Sacrificing a percentage of current economic growth to ensure the structural integrity of institutions a century from now is an acceptable, necessary trade-off." },
+    { "id": "tim2", "axis": "timePreference", "direction": -1, "text": "Debt-leveraged consumption is a valid mechanism to maximize immediate utility, even if it introduces systemic tail-risk for future generations." },
+    { "id": "tim3", "axis": "timePreference", "direction": 1,  "text": "Intergenerational wealth transfers and legacy building hold higher terminal value than maximizing peak individual lifetime consumption." },
+    { "id": "tim4", "axis": "timePreference", "direction": -1, "text": "The immediate alleviation of suffering supersedes the theoretical, long-term structural consequences of the interventions used to achieve it." },
+    { "id": "tim5", "axis": "timePreference", "direction": 1,  "text": "A society should prioritize massive capital expenditure on infrastructure with a 500-year payoff horizon over immediate consumer subsidies." },
+
+    { "id": "sov1", "axis": "sovereignty", "direction": 1,  "text": "Complex systems are best managed by creating universal, standardized protocols enforced by a central monolithic authority." },
+    { "id": "sov2", "axis": "sovereignty", "direction": -1, "text": "Subsidiarity dictates that decision-making must be computationally localized to the smallest feasible node, even at the cost of global efficiency." },
+    { "id": "sov3", "axis": "sovereignty", "direction": -1, "text": "Secession and the deliberate forking of political entities are legitimate mechanisms for resolving irreconcilable social divergence." },
+    { "id": "sov4", "axis": "sovereignty", "direction": 1,  "text": "Asymmetrical, planetary-scale threats (e.g. climate change, bio-terrorism) require the eventual consolidation of sovereignty into a single administrative apparatus." },
+    { "id": "sov5", "axis": "sovereignty", "direction": -1, "text": "Local failure modes (e.g. corruption in a small town) are preferable to the single point of failure inherent in a centralized bureaucracy." },
+
+    { "id": "res1", "axis": "resources", "direction": -1, "text": "Extreme wealth accumulation by individuals inherently extracts resources that would otherwise belong to the broader population." },
+    { "id": "res2", "axis": "resources", "direction": 1,  "text": "Technological innovation systematically redefines scarcity, expanding the total carrying capacity of the system rather than merely reallocating fixed assets." },
+    { "id": "res3", "axis": "resources", "direction": -1, "text": "Geopolitics is fundamentally an entropic battle over fixed physical and energy resources, making perpetual peace impossible." },
+    { "id": "res4", "axis": "resources", "direction": 1,  "text": "Capital allocation toward advanced computation and space exploration will eventually yield an economy untethered from terrestrial constraints." },
+    { "id": "res5", "axis": "resources", "direction": -1, "text": "In any transaction that generates extreme profit for one party, another party must necessarily be suffering an equivalent deficit." },
+
+    { "id": "rsk1", "axis": "risk", "direction": 1,  "text": "Deployment of transformative technologies (e.g. artificial general intelligence, synthetic biology) must be legally paused until all tail-risk failure modes are provably bounded." },
+    { "id": "rsk2", "axis": "risk", "direction": -1, "text": "The optimal strategy for mitigating existential risk is accelerating technological capabilities to engineer countermeasures dynamically as threats emerge." },
+    { "id": "rsk3", "axis": "risk", "direction": -1, "text": "Systemic stagnation is a mathematically greater risk to human survival than the unintended externalities of rapid scientific advancement." },
+    { "id": "rsk4", "axis": "risk", "direction": 1,  "text": "When a system's state space is sufficiently complex, the default stance toward altering its foundational parameters should be strict aversion." },
+    { "id": "rsk5", "axis": "risk", "direction": -1, "text": "Progress requires accepting that a certain statistical percentage of catastrophic failures is the unavoidable cost of evolutionary leaps." },
+
+    { "id": "nrm1", "axis": "norms", "direction": 1,  "text": "An action alters an individual's moral state and requires correction regardless of whether the network ever discovers it." },
+    { "id": "nrm2", "axis": "norms", "direction": -1, "text": "Reputation and the preservation of social \"face\" are the most reliable, efficient mechanisms for maintaining coordination in a community." },
+    { "id": "nrm3", "axis": "norms", "direction": 1,  "text": "Absolute philosophical principles hold greater weight than the contextual social friction caused by upholding them in public." },
+    { "id": "nrm4", "axis": "norms", "direction": -1, "text": "Ostracization and public disgrace are highly efficient, necessary protocols for correcting defective nodes in a social network." },
+    { "id": "nrm5", "axis": "norms", "direction": 1,  "text": "I am more disturbed by the internal knowledge that I violated a core principle than I am by public humiliation for a harmless mistake." },
+
+    { "id": "aut1", "axis": "authority", "direction": 1,  "text": "Multi-generational traditions encode highly optimized survival heuristics that cannot be safely deduced from first principles by single generations." },
+    { "id": "aut2", "axis": "authority", "direction": -1, "text": "Governance should be aggressively decoupled from popular sentiment and executed by specialized algorithms and domain experts." },
+    { "id": "aut3", "axis": "authority", "direction": 1,  "text": "Dismantling a historical social structure without fully understanding the exact selective pressures that built it is functionally suicidal." },
+    { "id": "aut4", "axis": "authority", "direction": -1, "text": "Societal systems are inherently legible; they can be successfully modeled and optimized from the top down using rigorous statistical methods." },
+    { "id": "aut5", "axis": "authority", "direction": -1, "text": "The \"wisdom of the ancients\" is mostly survivorship bias and holds little predictive power for managing modern, hyper-complex systems." },
+
+    { "id": "ont1", "axis": "ontology", "direction": 1,  "text": "The absolute maximization of individual autonomy and self-actualization is the highest terminal value a society can achieve." },
+    { "id": "ont2", "axis": "ontology", "direction": -1, "text": "Meaning is entirely derived from one's functional utility within a broader, intergenerational structure (family, religion, or state)." },
+    { "id": "ont3", "axis": "ontology", "direction": 1,  "text": "Social obligations are strictly contractual; they can be terminated at will without inherent moral penalty if the ROI becomes negative." },
+    { "id": "ont4", "axis": "ontology", "direction": -1, "text": "The individual is a transient component of the species; preserving the overarching architecture of the civilization takes absolute precedence over personal liberty." },
+    { "id": "ont5", "axis": "ontology", "direction": -1, "text": "True freedom is not the absence of constraints, but the voluntary adoption of rigorous duties to a system larger than oneself." }
+  ]
+}
