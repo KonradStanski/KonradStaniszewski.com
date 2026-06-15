@@ -129,11 +129,13 @@ export function PrefixMatchVisualizer() {
   const valid = validate(ip);
   const ipBin = valid ? ipToBinary(ip) : "";
 
-  const matches = valid
-    ? ROUTES.map((r) => ({ ...r, matches: matchesRoute(ipBin, r), len: maskLen(r.mask) }))
-    : [];
+  const entries = ROUTES.map((r) => ({
+    ...r,
+    matches: valid ? matchesRoute(ipBin, r) : false,
+    len: maskLen(r.mask),
+  }));
 
-  const longestMatch = matches
+  const longestMatch = entries
     .filter((m) => m.matches)
     .sort((a, b) => b.len - a.len)[0];
 
@@ -149,34 +151,34 @@ export function PrefixMatchVisualizer() {
           "bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
         )}
       />
-      {valid && (
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-left border-b dark:border-gray-700">
-                <th className="py-1 pr-2">Route</th>
-                <th className="py-1 pr-2">Prefix Bits</th>
-                <th className="py-1 pr-2">Match?</th>
-                <th className="py-1">Next Hop</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matches
-                .sort((a, b) => b.len - a.len)
-                .map((m, i) => {
-                  const prefixBin = ipToBinary(m.prefix);
-                  const isLongest = longestMatch && m.label === longestMatch.label;
-                  return (
-                    <tr
-                      key={i}
-                      className={cx(
-                        "border-b dark:border-gray-800",
-                        isLongest && "bg-green-50 dark:bg-green-900/30",
-                        !m.matches && "opacity-40"
-                      )}
-                    >
-                      <td className="py-2 pr-2 font-mono text-xs">{m.label}</td>
-                      <td className="py-2 pr-2">
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="text-left border-b dark:border-gray-700">
+              <th className="py-1 pr-2">Route</th>
+              <th className="py-1 pr-2">Prefix Bits</th>
+              <th className="py-1 pr-2">Match?</th>
+              <th className="py-1">Next Hop</th>
+            </tr>
+          </thead>
+          <tbody>
+            {entries
+              .sort((a, b) => b.len - a.len)
+              .map((m, i) => {
+                const prefixBin = ipToBinary(m.prefix);
+                const isLongest = longestMatch && m.label === longestMatch.label;
+                return (
+                  <tr
+                    key={i}
+                    className={cx(
+                      "border-b dark:border-gray-800",
+                      isLongest && "bg-green-50 dark:bg-green-900/30",
+                      valid && !m.matches && "opacity-40"
+                    )}
+                  >
+                    <td className="py-2 pr-2 font-mono text-xs">{m.label}</td>
+                    <td className="py-2 pr-2">
+                      {valid ? (
                         <span className="font-mono text-xs flex flex-wrap">
                           {ipBin.split("").map((bit, j) => (
                             <span
@@ -194,31 +196,35 @@ export function PrefixMatchVisualizer() {
                             </span>
                           ))}
                         </span>
-                      </td>
-                      <td className="py-2 pr-2">
-                        {m.matches ? (
-                          <span className="text-green-600 dark:text-green-400">✓</span>
-                        ) : (
-                          <span className="text-red-400">✗</span>
-                        )}
-                      </td>
-                      <td className="py-2 font-mono text-xs">{m.nextHop}</td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
-          {longestMatch && (
-            <p className="mt-3 text-sm font-semibold">
-              Longest prefix match:{" "}
-              <span className="text-green-600 dark:text-green-400 font-mono">
-                {longestMatch.label}
-              </span>{" "}
-              → {longestMatch.nextHop}
-            </p>
-          )}
-        </div>
-      )}
+                      ) : (
+                        <span className="font-mono text-xs text-gray-400">/{m.mask.replace("/", "")}</span>
+                      )}
+                    </td>
+                    <td className="py-2 pr-2">
+                      {!valid ? (
+                        <span className="text-gray-400">-</span>
+                      ) : m.matches ? (
+                        <span className="text-green-600 dark:text-green-400">✓</span>
+                      ) : (
+                        <span className="text-red-400">✗</span>
+                      )}
+                    </td>
+                    <td className="py-2 font-mono text-xs">{m.nextHop}</td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+        {longestMatch && (
+          <p className="mt-3 text-sm font-semibold">
+            Longest prefix match:{" "}
+            <span className="text-green-600 dark:text-green-400 font-mono">
+              {longestMatch.label}
+            </span>{" "}
+            → {longestMatch.nextHop}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -289,7 +295,7 @@ export function TCAMLookup() {
       const allRows = new Set(TCAM_ENTRIES.map((_, i) => i));
       setHighlightedRows(allRows);
       setStep(1);
-    }, 300);
+    }, 600);
 
     // Step 2: show matches
     setTimeout(() => {
@@ -299,7 +305,7 @@ export function TCAMLookup() {
       });
       setHighlightedRows(matchedRows);
       setStep(2);
-    }, 800);
+    }, 1800);
 
     // Step 3: priority encoder picks highest priority (lowest index) match
     setTimeout(() => {
@@ -314,7 +320,7 @@ export function TCAMLookup() {
       setHighlightedRows(best !== null ? new Set([best]) : new Set());
       setStep(3);
       setState("done");
-    }, 1400);
+    }, 3000);
   };
 
   return (
@@ -906,7 +912,7 @@ export function PrefixCompression() {
               {" "}Fewer entries = less power, less heat, more room for other routes.
             </p>
           ) : (
-            <p>No compression possible — routes have different next hops or are not adjacent siblings.</p>
+            <p>No compression possible. Routes have different next hops or are not adjacent siblings.</p>
           )}
         </div>
       )}

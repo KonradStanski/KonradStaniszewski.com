@@ -8,7 +8,7 @@ tags:
 status: completed
 ---
 
-Every time you send a packet across the internet, dozens of routers must each decide: *where does this packet go next?* That decision, made billions of times per second across the internet, relies on two ideas — **longest prefix matching** and a specialized piece of hardware called **TCAM**. Let's break down how they work.
+Every time you send a packet across the internet, dozens of routers must each decide: *where does this packet go next?* That decision relies on two ideas: **longest prefix matching** and a specialized piece of hardware called **TCAM**.
 
 ## IP Addresses in Binary
 
@@ -16,7 +16,7 @@ Before understanding route lookup, it helps to see what an IP address looks like
 
 <BinaryBreakdown />
 
-Routers don't think in dotted decimal — they operate on these raw bits. A route like `10.1.1.0/24` means "match the first 24 bits." The `/24` is the **prefix length**, and it tells the router exactly how many leading bits matter.
+Routers operate on these raw bits. A route like `10.1.1.0/24` means "match the first 24 bits." The `/24` is the **prefix length**, and it tells the router exactly how many leading bits matter.
 
 ## What Is Prefix Matching?
 
@@ -24,29 +24,29 @@ A router's forwarding table is a list of prefixes, each pointing to a next-hop d
 
 Multiple prefixes can match the same IP. Consider a packet destined for `10.1.1.200`:
 
-- `0.0.0.0/0` matches (it matches everything — it's the default route)
+- `0.0.0.0/0` matches (it matches everything, it's the default route)
 - `10.0.0.0/8` matches (first 8 bits agree)
 - `10.1.0.0/16` matches (first 16 bits agree)
 - `10.1.1.0/24` matches (first 24 bits agree)
-- `10.1.1.128/25` matches (first 25 bits agree — `200` = `11001000`, and the top bit is `1`)
+- `10.1.1.128/25` matches (first 25 bits agree, `200` = `11001000`, and the top bit is `1`)
 
 ### Longest Prefix Match Wins
 
-The router always picks the **most specific** matching route — the one with the longest prefix. This is the **longest prefix match** (LPM) rule. A longer prefix means a more specific route, which presumably has better information about how to reach that particular subnet.
+The router always picks the **most specific** matching route, the one with the longest prefix. This is the **longest prefix match** (LPM) rule. A longer prefix means a more specific route, which presumably has better information about how to reach that particular subnet.
 
 Try different IPs below to see which routes match and which wins:
 
 <PrefixMatchVisualizer />
 
 <Note>
-The longest prefix match rule is fundamental to how the internet works. Without it, we couldn't have hierarchical address allocation — every ISP would need a flat list of every network on earth.
+The longest prefix match rule is fundamental to how the internet works. Without it, we couldn't have hierarchical address allocation. Every ISP would need a flat list of every network on earth.
 </Note>
 
 ## The Problem: Speed
 
-A modern core router handles 10-100+ Gbps of traffic. With 64-byte minimum-size packets, that's potentially **hundreds of millions of packets per second**, each needing a route lookup. A full internet routing table has over **900,000 prefixes**.
+A single high-end chassis switch today can push hundreds of terabits per second of throughput, forwarding **trillions of packets per second**. Each of those packets needs a route lookup. The global IPv4 routing table alone has over **1,000,000 prefixes** (with IPv6 adding another ~250,000 and growing fast).
 
-A naive approach — linearly scanning the table — would take O(N) comparisons per packet. Even a trie (the standard software data structure for prefix matching) requires O(W) memory accesses, where W=32 for IPv4. With DRAM latency around 10 ns per access, that's ~320 ns per lookup — far too slow for line-rate forwarding.
+Linearly scanning the table would take O(N) comparisons per packet. Even a trie (the standard software data structure for prefix matching) requires O(W) memory accesses, where W=32 for IPv4. With DRAM latency around 10 ns per access, that's ~320 ns per lookup, far too slow for line-rate forwarding.
 
 ## Enter TCAM: Ternary Content-Addressable Memory
 
@@ -58,12 +58,12 @@ In conventional RAM, you provide an **address** and get back the **data** stored
 
 ### How TCAM Works
 
-TCAM flips this around. You provide the **content** (the destination IP) and the hardware tells you **where it matches** — checking every single entry **simultaneously in one clock cycle**.
+You provide the **content** (the destination IP) and the hardware tells you **where it matches**, checking every single entry **simultaneously in one clock cycle**.
 
 The "ternary" part means each bit in a TCAM entry can be one of three states:
-- **0** — must match a zero
-- **1** — must match a one
-- **X** — don't care (matches either)
+- **0**: must match a zero
+- **1**: must match a one
+- **X**: don't care (matches either)
 
 This is perfect for prefix matching. A `/24` route stores 24 specific bits followed by 8 don't-care bits. A `/16` stores 16 specific bits and 16 don't-care bits.
 
@@ -75,7 +75,7 @@ Click the button below to see a TCAM lookup in action:
 
 <TCAMLookup />
 
-The key insight: *all comparisons happen in parallel*. Whether the table has 100 entries or 1,000,000, the lookup takes the same amount of time — one TCAM cycle.
+*All comparisons happen in parallel.* Whether the table has 100 entries or 1,000,000, the lookup takes the same amount of time: one TCAM cycle.
 
 ### Inside a TCAM Cell
 
@@ -87,9 +87,9 @@ Each TCAM cell is built from a pair of SRAM cells storing two bits, which togeth
 | 1 | 1 | Match 1 only |
 | 0 | 1 | Don't care (X) |
 
-When a search key is broadcast across the TCAM array, each cell independently compares its stored value against the search bit. A match line runs across each row — if *every* cell in a row matches, that row's match line stays high. The priority encoder then picks the highest-priority (top-most) match.
+When a search key is broadcast across the TCAM array, each cell independently compares its stored value against the search bit. A match line runs across each row. If *every* cell in a row matches, that row's match line stays high. The priority encoder then picks the highest-priority (top-most) match.
 
-This is fundamentally different from RAM. There are no sequential memory accesses, no pointer chasing, no tree traversal. Every entry is compared at once via dedicated comparison circuitry built into each memory cell.
+There are no sequential memory accesses, no pointer chasing, no tree traversal. Every entry is compared at once via dedicated comparison circuitry built into each memory cell.
 
 ## TCAM vs Software: The Speed Gap
 
@@ -101,18 +101,18 @@ TCAM is not free. It comes with significant costs:
 
 | | TCAM | SRAM/DRAM (software) |
 |:---|:---|:---|
-| **Lookup speed** | O(1) — single cycle | O(W) — 32 accesses worst case |
+| **Lookup speed** | O(1), single cycle | O(W), 32 accesses worst case |
 | **Power consumption** | Very high (every cell active on every lookup) | Low (only accessed cells active) |
 | **Cost per bit** | ~10-20x more than SRAM | Baseline |
 | **Density** | Low (16 transistors/cell) | High (6 transistors/cell for SRAM) |
 | **Heat** | Significant cooling required | Minimal |
 | **Capacity** | Typically 1-20M entries | Virtually unlimited |
 
-The power cost is substantial — every lookup activates every cell in the TCAM simultaneously. This is why high-end routers consume kilowatts of power and need active cooling. It's also why TCAM capacity is always limited: more entries means proportionally more power and heat.
+The power cost is substantial. Every lookup activates every cell in the TCAM simultaneously. This is why high-end routers consume kilowatts of power and need active cooling. It's also why TCAM capacity is always limited: more entries means proportionally more power and heat.
 
 ### Why Not Just Use Faster Software?
 
-Modern CPUs are fast, but the physics are against them for this task. A trie lookup requires multiple *dependent* memory accesses — you can't fetch the next node until you've read the current one. CPU caches help, but a full internet routing table doesn't fit in L1/L2 cache, so most accesses go to slower DRAM.
+Modern CPUs are fast, but the physics are against them for this task. A trie lookup requires multiple *dependent* memory accesses. You can't fetch the next node until you've read the current one. CPU caches help, but a full internet routing table doesn't fit in L1/L2 cache, so most accesses go to slower DRAM.
 
 TCAM bypasses this entirely. There's no pointer chasing, no cache misses, no branch prediction. It's brute-force parallelism implemented in silicon.
 
@@ -120,20 +120,20 @@ TCAM bypasses this entirely. There's no pointer chasing, no cache misses, no bra
 
 The same TCAM principles extend to:
 
-- **IPv6** — same concept but 128-bit addresses; requires more TCAM space per entry
-- **ACLs** (Access Control Lists) — match on source IP, destination IP, port, protocol simultaneously
-- **MPLS label lookups** — exact match on 20-bit labels
-- **Policy-based routing** — match on arbitrary header field combinations
+- **IPv6**: same concept but 128-bit addresses; requires more TCAM space per entry
+- **ACLs** (Access Control Lists): match on source IP, destination IP, port, protocol simultaneously
+- **MPLS label lookups**: exact match on 20-bit labels
+- **Policy-based routing**: match on arbitrary header field combinations
 
 In each case, the ternary match capability and parallel comparison make TCAM the hardware of choice for classification tasks that must run at line rate.
 
-## Bonus: Prefix Compression — Squeezing More Out of TCAM
+## Bonus: Prefix Compression
 
-TCAM is expensive, power-hungry, and limited in capacity. Every entry you can eliminate saves silicon, watts, and heat. This is where **prefix compression** (also called route aggregation or supernetting) comes in.
+TCAM is expensive, power-hungry, and limited in capacity. Every entry you can eliminate saves silicon, watts, and heat. **Prefix compression** (also called route aggregation or supernetting) reduces the number of entries needed.
 
 ### The Core Idea
 
-If two adjacent prefixes of the same length point to the same next hop, they can be merged into a single shorter prefix that covers both. This is the inverse of subnetting — instead of splitting a network into smaller pieces, we're combining smaller pieces back into a larger one.
+If two adjacent prefixes of the same length point to the same next hop, they can be merged into a single shorter prefix that covers both. This is the inverse of subnetting, combining smaller prefixes back into a larger one.
 
 Consider these two /24 routes:
 
@@ -150,9 +150,9 @@ One TCAM entry instead of two, with identical forwarding behavior.
 
 Two routes can merge into a parent when all three conditions hold:
 
-1. **Same prefix length** — both are `/N`
-2. **Same next hop** — packets from both go to the same place
-3. **Sibling prefixes** — they share the first `N-1` bits and differ only at bit `N` (one has a `0`, the other a `1`)
+1. **Same prefix length**: both are `/N`
+2. **Same next hop**: packets from both go to the same place
+3. **Sibling prefixes**: they share the first `N-1` bits and differ only at bit `N` (one has a `0`, the other a `1`)
 
 This process is recursive. After merging two `/24`s into a `/23`, that `/23` might be mergeable with an adjacent `/23` into a `/22`, and so on.
 
@@ -164,18 +164,18 @@ Try the different scenarios below. Click **Compress** to see which routes can be
 
 ### Why This Matters at Scale
 
-The full internet routing table has over 900,000 prefixes. Without compression, each one occupies a TCAM row. ISPs and router vendors use aggressive aggregation strategies:
+The IPv4 internet routing table has over 1,000,000 prefixes. Without compression, each one occupies a TCAM row. ISPs and router vendors use aggressive aggregation strategies:
 
-- **Route summarization at borders** — an ISP advertises a single aggregate for its entire address space instead of thousands of individual customer routes
-- **Optimal TCAM encoding** — dedicated algorithms (like the Espresso logic minimizer) find the smallest set of ternary entries that produce identical forwarding behavior
-- **Dynamic re-aggregation** — some routers continuously re-optimize their TCAM contents as routes are added and withdrawn
+- **Route summarization at borders**: an ISP advertises a single aggregate for its entire address space instead of thousands of individual customer routes
+- **Optimal TCAM encoding**: dedicated algorithms (like the Espresso logic minimizer) find the smallest set of ternary entries that produce identical forwarding behavior
+- **Dynamic re-aggregation**: some routers continuously re-optimize their TCAM contents as routes are added and withdrawn
 
-Even modest compression — reducing the table by 10-20% — can mean the difference between fitting in TCAM or needing a more expensive chip. Given that TCAM costs ~10-20x more per bit than SRAM, every saved entry has real dollar value.
+Even modest compression, reducing the table by 10-20%, can mean the difference between fitting in TCAM or needing a more expensive chip. Given that TCAM costs ~10-20x more per bit than SRAM, every saved entry has real dollar value.
 
 <Note>
-Route compression must be done carefully. Over-aggregation can create "black holes" — advertising reachability for address space you can't actually reach. This is why compression only merges routes with the *same* next hop: the forwarding behavior is guaranteed to be identical.
+Route compression must be done carefully. Over-aggregation can create "black holes", advertising reachability for address space you can't actually reach. This is why compression only merges routes with the *same* next hop: the forwarding behavior is guaranteed to be identical.
 </Note>
 
 ## Summary
 
-Longest prefix matching is what lets the internet scale — hierarchical addressing means routers only need to know about network prefixes, not individual hosts. TCAM is the hardware that makes this lookup fast enough to forward every packet at wire speed. The combination of a well-defined algorithmic rule (longest prefix match) and purpose-built silicon (TCAM with priority encoding) is what allows a single router to handle billions of forwarding decisions per second.
+Longest prefix matching is what lets the internet scale. Hierarchical addressing means routers only need to know about network prefixes, not individual hosts. TCAM is the hardware that makes this lookup fast enough to forward every packet at wire speed. The combination of a well-defined algorithmic rule (longest prefix match) and purpose-built silicon (TCAM with priority encoding) is what allows a single switch to handle trillions of forwarding decisions per second.
