@@ -1,0 +1,130 @@
+---
+title: "How FPGAs Work: Programmable Silicon from Transistors to Systems"
+slug: how-fpgas-work
+description: How FPGAs use lookup tables, flip-flops, and configurable routing to implement arbitrary digital circuits in reconfigurable silicon
+date: 2026-06-15
+tags:
+  - hardware
+  - digital-design
+status: completed
+---
+
+A CPU can run any program, but it executes instructions one (or a few) at a time. An ASIC can process data at extraordinary speeds, but its function is frozen at the time of manufacturing. An **FPGA** (Field-Programmable Gate Array) sits between these two extremes: a chip that can be rewired after fabrication to become any digital circuit.
+
+This article builds up from the smallest piece of an FPGA (a single lookup table) to a full chip implementing a CPU, a GPU pipeline, and a packet forwarding engine. All on the same silicon.
+
+## Any Boolean Function from a Table
+
+All digital logic, no matter how complex, ultimately reduces to boolean functions. An AND gate, an adder, a multiplexer, a video decoder: at the bottom, they're all combinations of operations on 0s and 1s.
+
+Any boolean function of N inputs can be completely defined by its **truth table**: a list of 2^N entries mapping every possible input combination to an output. A 3-input function has 8 rows. A 4-input function has 16 rows.
+
+A **lookup table (LUT)** implements this directly. It's a small memory with 2^N entries, addressed by the input bits. Load the truth table into the memory, and the LUT computes the function by reading the stored output for the given input. No logic gates needed, just a memory read.
+
+The critical point: if you can rewrite the memory contents, you can change which function the LUT computes. An AND gate becomes an XOR gate by changing 16 bits of configuration. This is the fundamental mechanism behind FPGA reconfigurability.
+
+Try it below. Select a preset function or click individual output cells to define any boolean function you want, and watch the LUT's memory contents and boolean expression update in real time.
+
+<LUTExplorer />
+
+## Remembering State: Flip-Flops
+
+LUTs compute outputs from inputs instantly (combinational logic), but real circuits need to remember things. A counter needs to know its current value. A state machine needs to know which state it's in. A pipeline register needs to hold data for exactly one clock cycle.
+
+A **D flip-flop** solves this. On every rising edge of the clock signal, it captures whatever value is on its input (D) and holds it at its output (Q) until the next clock edge. Between edges, the output is stable regardless of how the input changes.
+
+FPGAs pair each LUT with one or more flip-flops. The output of a LUT can either pass straight through to the routing fabric (combinational mode) or go through a flip-flop first (registered mode). In registered mode, the output only updates once per clock cycle, synchronized with every other registered output on the chip.
+
+Toggle the "Registered output" checkbox in the explorer above and use the test inputs to see the difference. In combinational mode, changing an input immediately changes the output. In registered mode, the LUT output changes instantly but the final output holds its old value until you click Clock. That single clock-edge capture is how all sequential logic works in an FPGA.
+
+## The Configurable Logic Block
+
+A single LUT can implement one small boolean function. Real designs need thousands or millions of functions working together. FPGAs group LUTs, flip-flops, and supporting logic into a repeating unit called a **Configurable Logic Block (CLB)**.
+
+A modern CLB typically contains 4-8 **slices**, each holding:
+
+- Two to four 6-input LUTs
+- An equal number of flip-flops
+- Carry chain logic for fast arithmetic
+- Multiplexers for output selection
+
+The carry chain is worth noting. Building an adder purely from LUTs is slow because each bit position must wait for the carry from the previous position, and that carry has to ripple through separate LUT lookups. The carry chain provides a dedicated hardwired path between adjacent slices, making addition and subtraction nearly as fast as in a custom chip.
+
+Click the components in the diagram below to see what each piece does.
+
+<CLBDiagram />
+
+## The Routing Fabric: Connecting Everything
+
+CLBs provide the compute, but the **routing fabric** is what makes an FPGA truly flexible. It typically consumes 60-70% of the chip's total area, more than all the logic combined.
+
+The routing fabric consists of:
+
+- **Wire segments**: horizontal and vertical metal tracks running between CLB columns and rows
+- **Switch boxes**: at each intersection, programmable pass transistors can connect or disconnect wire segments
+- **Connection boxes**: programmable muxes that link CLB inputs and outputs to nearby wire segments
+
+Every switch and mux is controlled by a configuration bit. The full FPGA configuration (the "bitstream") is really just a giant bitmap: millions of bits specifying every LUT truth table, every mux setting, and every switch position on the entire chip.
+
+This is also why FPGA designs run slower than equivalent ASICs. In an ASIC, two logic blocks that need to communicate are connected by a direct metal wire drawn at manufacturing time. In an FPGA, the same signal must traverse multiple programmable switches, each adding a small delay. A signal that crosses the chip might pass through 10-20 switch boxes.
+
+Click a source CLB and then a destination CLB below to see how signals route through the switch fabric.
+
+<RoutingFabric />
+
+## From VHDL to Silicon
+
+So far we've seen the hardware: LUTs, flip-flops, CLBs, and routing. But nobody programs an FPGA by hand-editing truth tables and switch settings. Instead, engineers describe the desired circuit in a **Hardware Description Language (HDL)**, most commonly VHDL or Verilog.
+
+An HDL looks superficially like a programming language, but it describes hardware, not software. A variable isn't a memory location, it's a wire or a register. An `if` statement isn't a branch, it's a multiplexer. A `process` block isn't a function call, it's a physical piece of logic that runs continuously in parallel with every other process.
+
+The toolchain that turns HDL into a working FPGA configuration has several stages:
+
+1. **Synthesis**: the HDL is parsed and converted into a netlist of logic gates and flip-flops
+2. **Technology mapping**: each gate-level function is packed into the target FPGA's LUTs
+3. **Placement**: each LUT+FF pair is assigned to a specific physical CLB on the chip
+4. **Routing**: the tool programs switch boxes to connect CLB outputs to downstream CLB inputs
+5. **Bitstream generation**: all LUT truth tables, FF enables, and switch settings are serialized into a binary file
+
+The walkthrough below traces a simple 4-bit counter through every stage, from VHDL source code to the final configuration bits that get loaded onto the chip.
+
+<SynthesisFlow />
+
+<Note>
+Real FPGAs contain millions of LUTs. A modern high-end device might have over 1 million 6-input LUTs, 2,000+ Block RAMs, 6,000+ DSP slices, and hundreds of I/O pins, all connected by a routing fabric with billions of configuration bits. The synthesis, placement, and routing steps for a real design can take hours of compute time.
+</Note>
+
+## Running the Counter
+
+With the counter synthesized, mapped, placed, and routed, the FPGA is configured and ready to run. The simulation below shows the same 4-bit counter on the fabric with live values. Each CLB displays two values: **D** (the LUT's computed next value) and **Q** (the flip-flop's current output).
+
+The routing lines between CLBs carry specific signals, and understanding *why* each connection exists is the key to understanding the circuit. A binary counter increments by toggling bits based on the carry from all lower bits:
+
+- **cnt(0)** toggles every cycle. It needs no input from other CLBs, just its own feedback (internal to the CLB).
+- **cnt(1)** toggles when cnt(0)=1. Its LUT needs the Q output of CLB(1,1), so there's a route from cnt(0) to cnt(1).
+- **cnt(2)** toggles when cnt(1:0)="11" (both lower bits are 1). Its LUT needs Q from *both* cnt(0) and cnt(1), so two routes feed into it.
+- **cnt(3)** toggles when cnt(2:0)="111". It needs Q from all three other CLBs, requiring three incoming routes.
+
+Each labeled arrow (Q0=, Q1=, Q2=) shows the flip-flop output of one CLB being routed to the LUT input of another. The labels update with live values as the counter runs. Click any used CLB to inspect its LUT configuration, inputs, and truth table.
+
+On each clock edge, two things happen in sequence. First, every LUT evaluates its inputs and produces a new D value. Then, every flip-flop captures D into Q. The counter advances.
+
+<FPGASimulator />
+
+## Three Designs, One Chip
+
+Everything above describes the hardware. The real power of an FPGA is that the same chip can become fundamentally different machines depending on the bitstream loaded into it. Different truth tables in the LUTs, different switch settings in the routing fabric, different utilization of the hard blocks.
+
+To make this concrete, consider three architectures implemented on the same FPGA: a CPU, a GPU-like parallel processor, and a packet forwarding engine. Each uses the same silicon resources in radically different proportions.
+
+<DesignComparison />
+
+The resource utilization bars tell the story. A CPU barely touches the FPGA's resources because only one pipeline stage is active per cycle. A GPU pipeline fills the DSP slices and BRAM with parallel compute lanes and shared memory. A forwarding engine uses BRAM heavily for lookup tables and queues, with moderate logic for the pipeline stages.
+
+This flexibility is why FPGAs are used for prototyping ASICs (test the design before spending millions on a chip fabrication run), for low-volume production (when the per-unit cost of an ASIC can't be justified), and for applications where the hardware logic needs to change after deployment (network switches that support new protocols, trading systems that adapt to new market structures, defense systems that get field-upgraded).
+
+## Summary
+
+An FPGA is a chip full of tiny truth tables and programmable switches. Reprogram the truth tables and flip the switches, and the chip becomes a different circuit. The LUTs provide arbitrary boolean logic. The flip-flops provide state. The routing fabric connects them into any topology. The hard blocks (BRAM, DSP, I/O) provide efficient implementations of common functions that would be too expensive to build from LUTs alone.
+
+The cost of this generality is performance and power: an FPGA runs 3-10x slower than an equivalent ASIC and burns more power per operation. But the ability to reconfigure the hardware without manufacturing a new chip is a tradeoff worth making in a surprisingly large number of applications.

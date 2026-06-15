@@ -9,6 +9,15 @@ import {
   TCAMvsRAM,
   PrefixCompression,
 } from "./TCAMVisualizer";
+import {
+  LUTExplorer,
+  CLBDiagram,
+  SynthesisFlow,
+  FPGAFabric,
+  FPGASimulator,
+  RoutingFabric,
+  DesignComparison,
+} from "./FPGAVisualizer";
 export const components = {
   Image,
   Note,
@@ -19,4 +28,11 @@ export const components = {
   TCAMLookup,
   TCAMvsRAM,
   PrefixCompression,
+  LUTExplorer,
+  CLBDiagram,
+  SynthesisFlow,
+  FPGAFabric,
+  FPGASimulator,
+  RoutingFabric,
+  DesignComparison,
 };

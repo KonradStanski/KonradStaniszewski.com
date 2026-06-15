@@ -30,7 +30,7 @@
     "p5": "^2.1.1",
     "pdfjs-dist": "^5.5.207",
     "playwright": "^1.49.1",
-    "posthog-js": "^1.364.6",
+    "posthog-js": "^1.386.8",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.4",
     "react-chartjs-2": "^5.3.1",
