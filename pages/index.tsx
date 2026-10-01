@@ -1,8 +1,29 @@
 import type { NextPage } from "next";
+import Head from "next/head";
+import siteConfig from "@/data/siteConfig";
 
 const Home: NextPage = () => {
   return (
     <div>
+      <Head>
+        <title>{siteConfig.siteName}</title>
+        <meta name="description" content={siteConfig.siteDescription} />
+        <meta property="og:url" content={siteConfig.siteUrl} />
+        <meta property="og:title" content={siteConfig.siteName} />
+        <meta property="og:description" content={siteConfig.siteDescription} />
+        <meta
+          property="og:image"
+          content={`${siteConfig.siteUrl}${siteConfig.siteThumbnail}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={siteConfig.siteName} />
+        <meta name="twitter:description" content={siteConfig.siteDescription} />
+        <meta
+          name="twitter:image"
+          content={`${siteConfig.siteUrl}${siteConfig.siteThumbnail}`}
+        />
+      </Head>
       <div className="m-auto px-4 md:px-10">
         <div id="intro-section" className="py-5 flex flex-col md:flex md:flex-row">
           <div className="flex flex-col text-xl justify-around">
