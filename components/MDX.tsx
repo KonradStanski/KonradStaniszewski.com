@@ -18,6 +18,18 @@ import {
   RoutingFabric,
   DesignComparison,
 } from "./FPGAVisualizer";
+import {
+  ExpectationsComparison,
+  HotStockLossExample,
+  NoEdgeMonteCarlo,
+  ProfessionalFundCostEvidence,
+  RetailActivityEvidence,
+  RetailPerformanceEvidence,
+  TechnicalNote,
+  WealthCreationIllustration,
+} from "./MarketPrinciples";
+import { SmithManoeuvrePlanner } from "./SmithManoeuvrePlanner";
+import { MortgageRatePlanner } from "./MortgageRatePlanner";
 export const components = {
   Image,
   Note,
@@ -35,4 +47,14 @@ export const components = {
   FPGASimulator,
   RoutingFabric,
   DesignComparison,
+  ExpectationsComparison,
+  HotStockLossExample,
+  NoEdgeMonteCarlo,
+  ProfessionalFundCostEvidence,
+  RetailActivityEvidence,
+  RetailPerformanceEvidence,
+  TechnicalNote,
+  WealthCreationIllustration,
+  SmithManoeuvrePlanner,
+  MortgageRatePlanner,
 };

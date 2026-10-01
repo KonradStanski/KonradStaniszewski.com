@@ -1,0 +1,911 @@
+{
+  "generatedAt": "2026-09-09",
+  "mode": "apply",
+  "router": "https://router.project-osrm.org",
+  "acceptanceRules": {
+    "minimumPoints": 25,
+    "maximumWaypointSnapMetres": 2000,
+    "coarseDistanceRatioWhenNoPublishedDistance": [
+      0.85,
+      2
+    ],
+    "publishedDistanceRatio": [
+      0.6,
+      1.4
+    ],
+    "excludedKinds": [
+      "trail-system",
+      "constraint"
+    ],
+    "excludedRouteIds": [
+      "VI-14",
+      "VI-24",
+      "VI-25",
+      "RI-13",
+      "RI-14",
+      "RI-17",
+      "RI-07"
+    ]
+  },
+  "acceptedCount": 10,
+  "currentRoadMatchedCount": 16,
+  "totalCount": 69,
+  "results": [
+    {
+      "id": "LM-01",
+      "name": "Harrison–Pemberton",
+      "accepted": false,
+      "reason": "waypoint snap 10706 m; published-distance ratio 2.01",
+      "originalPointCount": 6,
+      "candidatePointCount": 9432,
+      "coarseDistanceKm": 139.3,
+      "routedDistanceKm": 326.3,
+      "publishedDistanceKm": 162,
+      "maxWaypointSnapMetres": 10706
+    },
+    {
+      "id": "LM-02",
+      "name": "Harrison East / Kookipi",
+      "accepted": false,
+      "reason": "waypoint snap 4619 m",
+      "originalPointCount": 5,
+      "candidatePointCount": 5074,
+      "coarseDistanceKm": 101.2,
+      "routedDistanceKm": 167.6,
+      "publishedDistanceKm": 127,
+      "maxWaypointSnapMetres": 4619
+    },
+    {
+      "id": "LM-03",
+      "name": "Hurley / Gold Bridge / Highline",
+      "accepted": false,
+      "reason": "waypoint snap 3883 m",
+      "originalPointCount": 6,
+      "candidatePointCount": 7420,
+      "coarseDistanceKm": 141.7,
+      "routedDistanceKm": 385.8,
+      "publishedDistanceKm": 413,
+      "maxWaypointSnapMetres": 3883
+    },
+    {
+      "id": "LM-04",
+      "name": "Squamish River / Ashlu / Elaho",
+      "accepted": false,
+      "reason": "Skipped constraint; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "LM-05",
+      "name": "Mamquam / Mount Mulligan",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 3,
+      "candidatePointCount": 812,
+      "coarseDistanceKm": 14.3,
+      "routedDistanceKm": 20.1,
+      "publishedDistanceKm": 22,
+      "maxWaypointSnapMetres": 302
+    },
+    {
+      "id": "LM-06",
+      "name": "Cheekye / Brohm Ridge",
+      "accepted": false,
+      "reason": "waypoint snap 4880 m; published-distance ratio 6.05",
+      "originalPointCount": 3,
+      "candidatePointCount": 1485,
+      "coarseDistanceKm": 13.8,
+      "routedDistanceKm": 66.6,
+      "publishedDistanceKm": 11,
+      "maxWaypointSnapMetres": 4880
+    },
+    {
+      "id": "LM-07",
+      "name": "Callaghan Lake FSR",
+      "accepted": false,
+      "reason": "waypoint snap 2798 m; published-distance ratio 2.09",
+      "originalPointCount": 3,
+      "candidatePointCount": 545,
+      "coarseDistanceKm": 12.4,
+      "routedDistanceKm": 16.8,
+      "publishedDistanceKm": 8,
+      "maxWaypointSnapMetres": 2798
+    },
+    {
+      "id": "LM-08",
+      "name": "Lower Sunshine Coast network",
+      "accepted": false,
+      "reason": "waypoint snap 4140 m",
+      "originalPointCount": 4,
+      "candidatePointCount": 1668,
+      "coarseDistanceKm": 50.4,
+      "routedDistanceKm": 65.9,
+      "publishedDistanceKm": null,
+      "maxWaypointSnapMetres": 4140
+    },
+    {
+      "id": "LM-09",
+      "name": "Powell River Lakes",
+      "accepted": false,
+      "reason": "waypoint snap 2981 m",
+      "originalPointCount": 5,
+      "candidatePointCount": 2235,
+      "coarseDistanceKm": 58.2,
+      "routedDistanceKm": 125.7,
+      "publishedDistanceKm": 103,
+      "maxWaypointSnapMetres": 2981
+    },
+    {
+      "id": "LM-10",
+      "name": "Florence Lake / Stave West",
+      "accepted": false,
+      "reason": "published-distance ratio 2.31",
+      "originalPointCount": 3,
+      "candidatePointCount": 1428,
+      "coarseDistanceKm": 17.1,
+      "routedDistanceKm": 46.2,
+      "publishedDistanceKm": 20,
+      "maxWaypointSnapMetres": 101
+    },
+    {
+      "id": "LM-11",
+      "name": "Stave River / East Stave",
+      "accepted": false,
+      "reason": "waypoint snap 7265 m; published-distance ratio 3.94",
+      "originalPointCount": 3,
+      "candidatePointCount": 3291,
+      "coarseDistanceKm": 29.9,
+      "routedDistanceKm": 125.9,
+      "publishedDistanceKm": 32,
+      "maxWaypointSnapMetres": 7265
+    },
+    {
+      "id": "LM-12",
+      "name": "Chehalis Lake north beach",
+      "accepted": false,
+      "reason": "published-distance ratio 2.57",
+      "originalPointCount": 3,
+      "candidatePointCount": 3500,
+      "coarseDistanceKm": 25.1,
+      "routedDistanceKm": 110.4,
+      "publishedDistanceKm": 43,
+      "maxWaypointSnapMetres": 1300
+    },
+    {
+      "id": "LM-13",
+      "name": "Big Silver Creek beaches",
+      "accepted": false,
+      "reason": "published-distance ratio 1.76",
+      "originalPointCount": 3,
+      "candidatePointCount": 2028,
+      "coarseDistanceKm": 32.5,
+      "routedDistanceKm": 56.4,
+      "publishedDistanceKm": 32,
+      "maxWaypointSnapMetres": 1381
+    },
+    {
+      "id": "LM-14",
+      "name": "Lost Creek / Salisbury / Kenyon",
+      "accepted": false,
+      "reason": "published-distance ratio 3.39",
+      "originalPointCount": 3,
+      "candidatePointCount": 1060,
+      "coarseDistanceKm": 13.6,
+      "routedDistanceKm": 47.5,
+      "publishedDistanceKm": 14,
+      "maxWaypointSnapMetres": 1751
+    },
+    {
+      "id": "LM-15",
+      "name": "American Creek",
+      "accepted": false,
+      "reason": "waypoint snap 3983 m; published-distance ratio 3.07",
+      "originalPointCount": 3,
+      "candidatePointCount": 763,
+      "coarseDistanceKm": 12,
+      "routedDistanceKm": 33.8,
+      "publishedDistanceKm": 11,
+      "maxWaypointSnapMetres": 3983
+    },
+    {
+      "id": "LM-16",
+      "name": "Liumchen East / Windy Knob",
+      "accepted": false,
+      "reason": "waypoint snap 4085 m; published-distance ratio 14.68",
+      "originalPointCount": 3,
+      "candidatePointCount": 4216,
+      "coarseDistanceKm": 10.2,
+      "routedDistanceKm": 205.5,
+      "publishedDistanceKm": 14,
+      "maxWaypointSnapMetres": 4085
+    },
+    {
+      "id": "LM-17",
+      "name": "Tamihi motorized network",
+      "accepted": false,
+      "reason": "Skipped trail-system; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "LM-18",
+      "name": "Foley Creek / Foley Lake",
+      "accepted": false,
+      "reason": "waypoint snap 2717 m; published-distance ratio 9.02",
+      "originalPointCount": 3,
+      "candidatePointCount": 2161,
+      "coarseDistanceKm": 11.2,
+      "routedDistanceKm": 108.3,
+      "publishedDistanceKm": 12,
+      "maxWaypointSnapMetres": 2717
+    },
+    {
+      "id": "LM-19",
+      "name": "Nickelmine riding area",
+      "accepted": false,
+      "reason": "Skipped trail-system; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "VI-01",
+      "name": "Vancouver Island Grand Loop",
+      "accepted": false,
+      "reason": "Restored to coarse control points after rendered QA found unreliable loop topology.",
+      "originalPointCount": 13,
+      "candidatePointCount": 23301,
+      "coarseDistanceKm": 884.2,
+      "routedDistanceKm": 1518.7,
+      "publishedDistanceKm": 1700,
+      "maxWaypointSnapMetres": 1655
+    },
+    {
+      "id": "VI-02",
+      "name": "Pacific Marine Circle",
+      "accepted": false,
+      "reason": "Restored to coarse control points after rendered QA found unreliable loop topology.",
+      "originalPointCount": 6,
+      "candidatePointCount": 5766,
+      "coarseDistanceKm": 195,
+      "routedDistanceKm": 264.1,
+      "publishedDistanceKm": 289,
+      "maxWaypointSnapMetres": 66
+    },
+    {
+      "id": "VI-03",
+      "name": "Port Renfrew–Lake Cowichan dirt",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 3,
+      "candidatePointCount": 1435,
+      "coarseDistanceKm": 40.5,
+      "routedDistanceKm": 72,
+      "publishedDistanceKm": 62,
+      "maxWaypointSnapMetres": 43
+    },
+    {
+      "id": "VI-04",
+      "name": "Lake Cowichan–Bamfield",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 3,
+      "candidatePointCount": 2227,
+      "coarseDistanceKm": 79.7,
+      "routedDistanceKm": 141.5,
+      "publishedDistanceKm": 116,
+      "maxWaypointSnapMetres": 283
+    },
+    {
+      "id": "VI-05",
+      "name": "Bamfield Main",
+      "accepted": false,
+      "reason": "published-distance ratio 2.90",
+      "originalPointCount": 4,
+      "candidatePointCount": 3803,
+      "coarseDistanceKm": 52.5,
+      "routedDistanceKm": 257.7,
+      "publishedDistanceKm": 89,
+      "maxWaypointSnapMetres": 402
+    },
+    {
+      "id": "VI-06",
+      "name": "Gold River–Woss",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 4,
+      "candidatePointCount": 1372,
+      "coarseDistanceKm": 66.1,
+      "routedDistanceKm": 103.7,
+      "publishedDistanceKm": 77,
+      "maxWaypointSnapMetres": 329
+    },
+    {
+      "id": "VI-07",
+      "name": "Woss–Port Alice via Atluck",
+      "accepted": false,
+      "reason": "published-distance ratio 1.77",
+      "originalPointCount": 4,
+      "candidatePointCount": 3155,
+      "coarseDistanceKm": 69.1,
+      "routedDistanceKm": 196.1,
+      "publishedDistanceKm": 111,
+      "maxWaypointSnapMetres": 720
+    },
+    {
+      "id": "VI-08",
+      "name": "Alice Lake Loop",
+      "accepted": false,
+      "reason": "published-distance ratio 1.40",
+      "originalPointCount": 5,
+      "candidatePointCount": 2648,
+      "coarseDistanceKm": 78,
+      "routedDistanceKm": 140.3,
+      "publishedDistanceKm": 100,
+      "maxWaypointSnapMetres": 1950
+    },
+    {
+      "id": "VI-09",
+      "name": "Port Alice–Cape Scott",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 4,
+      "candidatePointCount": 2537,
+      "coarseDistanceKm": 59,
+      "routedDistanceKm": 146,
+      "publishedDistanceKm": 110,
+      "maxWaypointSnapMetres": 114
+    },
+    {
+      "id": "VI-10",
+      "name": "Holberg–Port Hardy",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 3,
+      "candidatePointCount": 1709,
+      "coarseDistanceKm": 39.4,
+      "routedDistanceKm": 87.6,
+      "publishedDistanceKm": 70,
+      "maxWaypointSnapMetres": 398
+    },
+    {
+      "id": "VI-11",
+      "name": "Telegraph Cove–Sayward",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 4,
+      "candidatePointCount": 3540,
+      "coarseDistanceKm": 85.5,
+      "routedDistanceKm": 183.9,
+      "publishedDistanceKm": 134,
+      "maxWaypointSnapMetres": 1783
+    },
+    {
+      "id": "VI-12",
+      "name": "Sayward–Campbell River backroads",
+      "accepted": false,
+      "reason": "published-distance ratio 2.63",
+      "originalPointCount": 4,
+      "candidatePointCount": 4213,
+      "coarseDistanceKm": 72.4,
+      "routedDistanceKm": 197,
+      "publishedDistanceKm": 75,
+      "maxWaypointSnapMetres": 95
+    },
+    {
+      "id": "VI-13",
+      "name": "North Island 1000",
+      "accepted": false,
+      "reason": "Restored to coarse control points after rendered QA found unreliable loop topology.",
+      "originalPointCount": 10,
+      "candidatePointCount": 14589,
+      "coarseDistanceKm": 462.3,
+      "routedDistanceKm": 933.9,
+      "publishedDistanceKm": 1000,
+      "maxWaypointSnapMetres": 209
+    },
+    {
+      "id": "VI-14",
+      "name": "Khyber Pass alternate",
+      "accepted": false,
+      "reason": "Skipped by route-specific safety rule; car routing would misrepresent this record.",
+      "originalPointCount": 3
+    },
+    {
+      "id": "VI-15",
+      "name": "Tree to Sea Drive",
+      "accepted": false,
+      "reason": "published-distance ratio 1.57",
+      "originalPointCount": 4,
+      "candidatePointCount": 1976,
+      "coarseDistanceKm": 45.9,
+      "routedDistanceKm": 100.6,
+      "publishedDistanceKm": 64,
+      "maxWaypointSnapMetres": 1190
+    },
+    {
+      "id": "VI-16",
+      "name": "Great Canadian Roadbook Rally",
+      "accepted": false,
+      "reason": "waypoint snap 2669 m; published-distance ratio 0.47",
+      "originalPointCount": 5,
+      "candidatePointCount": 5721,
+      "coarseDistanceKm": 96.6,
+      "routedDistanceKm": 379.8,
+      "publishedDistanceKm": 800,
+      "maxWaypointSnapMetres": 2669
+    },
+    {
+      "id": "VI-17",
+      "name": "Tansky ORV area",
+      "accepted": false,
+      "reason": "Skipped trail-system; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "VI-18",
+      "name": "Whiskey Creek ORV area",
+      "accepted": false,
+      "reason": "Skipped trail-system; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "VI-19",
+      "name": "Cook Creek riding area",
+      "accepted": false,
+      "reason": "Skipped trail-system; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "VI-20",
+      "name": "Tugwell–Alligator loop",
+      "accepted": false,
+      "reason": "Restored to coarse control points after rendered QA found unreliable loop topology.",
+      "originalPointCount": 4,
+      "candidatePointCount": 1412,
+      "coarseDistanceKm": 50.7,
+      "routedDistanceKm": 82.9,
+      "publishedDistanceKm": 60,
+      "maxWaypointSnapMetres": 166
+    },
+    {
+      "id": "VI-21",
+      "name": "Walker Lake / San Juan Ridge",
+      "accepted": false,
+      "reason": "published-distance ratio 1.96",
+      "originalPointCount": 4,
+      "candidatePointCount": 4128,
+      "coarseDistanceKm": 67.2,
+      "routedDistanceKm": 176.5,
+      "publishedDistanceKm": 90,
+      "maxWaypointSnapMetres": 686
+    },
+    {
+      "id": "VI-22",
+      "name": "Youbou–Port Alberni–Bamfield",
+      "accepted": false,
+      "reason": "Restored to coarse control points after rendered QA found unreliable loop topology.",
+      "originalPointCount": 5,
+      "candidatePointCount": 5454,
+      "coarseDistanceKm": 185.1,
+      "routedDistanceKm": 355.7,
+      "publishedDistanceKm": 300,
+      "maxWaypointSnapMetres": 1948
+    },
+    {
+      "id": "VI-23",
+      "name": "Shawnigan–Port Renfrew–Jordan River",
+      "accepted": false,
+      "reason": "Skipped constraint; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "VI-24",
+      "name": "Tree to Sea research overlay",
+      "accepted": false,
+      "reason": "Skipped by route-specific safety rule; car routing would misrepresent this record.",
+      "originalPointCount": 6
+    },
+    {
+      "id": "VI-25",
+      "name": "Alberni Bam Bam research overlay",
+      "accepted": false,
+      "reason": "Skipped by route-specific safety rule; car routing would misrepresent this record.",
+      "originalPointCount": 6
+    },
+    {
+      "id": "RI-01",
+      "name": "TCAT BC mainland",
+      "accepted": false,
+      "reason": "waypoint snap 13367 m; published-distance ratio 0.54",
+      "originalPointCount": 9,
+      "candidatePointCount": 24525,
+      "coarseDistanceKm": 1039.2,
+      "routedDistanceKm": 1897.3,
+      "publishedDistanceKm": 3500,
+      "maxWaypointSnapMetres": 13367
+    },
+    {
+      "id": "RI-02",
+      "name": "TCAT Kootenay–Boundary",
+      "accepted": false,
+      "reason": "waypoint snap 5404 m",
+      "originalPointCount": 8,
+      "candidatePointCount": 12423,
+      "coarseDistanceKm": 326.3,
+      "routedDistanceKm": 633.5,
+      "publishedDistanceKm": null,
+      "maxWaypointSnapMetres": 5404
+    },
+    {
+      "id": "RI-03",
+      "name": "TCAT Chilcotin–Cariboo",
+      "accepted": false,
+      "reason": "waypoint snap 9155 m; coarse-distance ratio 2.10",
+      "originalPointCount": 7,
+      "candidatePointCount": 9863,
+      "coarseDistanceKm": 365.5,
+      "routedDistanceKm": 768.1,
+      "publishedDistanceKm": null,
+      "maxWaypointSnapMetres": 9155
+    },
+    {
+      "id": "RI-04",
+      "name": "Gray Creek Pass",
+      "accepted": false,
+      "reason": "waypoint snap 3582 m; published-distance ratio 1.46",
+      "originalPointCount": 4,
+      "candidatePointCount": 2451,
+      "coarseDistanceKm": 59.2,
+      "routedDistanceKm": 132.5,
+      "publishedDistanceKm": 91,
+      "maxWaypointSnapMetres": 3582
+    },
+    {
+      "id": "RI-05",
+      "name": "Old Cascade Highway",
+      "accepted": false,
+      "reason": "published-distance ratio 1.49",
+      "originalPointCount": 3,
+      "candidatePointCount": 4677,
+      "coarseDistanceKm": 33,
+      "routedDistanceKm": 107.1,
+      "publishedDistanceKm": 72,
+      "maxWaypointSnapMetres": 1483
+    },
+    {
+      "id": "RI-06",
+      "name": "Highway 31 / Trout Lake",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 3,
+      "candidatePointCount": 1290,
+      "coarseDistanceKm": 58.5,
+      "routedDistanceKm": 88.1,
+      "publishedDistanceKm": 100,
+      "maxWaypointSnapMetres": 1738
+    },
+    {
+      "id": "RI-07",
+      "name": "Whipsaw Trail",
+      "accepted": false,
+      "reason": "Skipped by route-specific safety rule; car routing would misrepresent this record.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "RI-08",
+      "name": "Hurley River Road",
+      "accepted": false,
+      "reason": "waypoint snap 3380 m; published-distance ratio 2.35",
+      "originalPointCount": 3,
+      "candidatePointCount": 3767,
+      "coarseDistanceKm": 61,
+      "routedDistanceKm": 199.5,
+      "publishedDistanceKm": 85,
+      "maxWaypointSnapMetres": 3380
+    },
+    {
+      "id": "RI-09",
+      "name": "Harrison–Pemberton TCAT link",
+      "accepted": false,
+      "reason": "waypoint snap 7053 m; published-distance ratio 1.91",
+      "originalPointCount": 4,
+      "candidatePointCount": 9044,
+      "coarseDistanceKm": 138.7,
+      "routedDistanceKm": 309.2,
+      "publishedDistanceKm": 162,
+      "maxWaypointSnapMetres": 7053
+    },
+    {
+      "id": "RI-10",
+      "name": "West Pavilion / Big Bar / Gang Ranch",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 5,
+      "candidatePointCount": 5463,
+      "coarseDistanceKm": 182.2,
+      "routedDistanceKm": 367.5,
+      "publishedDistanceKm": 550,
+      "maxWaypointSnapMetres": 1229
+    },
+    {
+      "id": "RI-11",
+      "name": "Douglas Lake Road",
+      "accepted": false,
+      "reason": "waypoint snap 4684 m",
+      "originalPointCount": 3,
+      "candidatePointCount": 1719,
+      "coarseDistanceKm": 92.4,
+      "routedDistanceKm": 110.3,
+      "publishedDistanceKm": 166,
+      "maxWaypointSnapMetres": 4684
+    },
+    {
+      "id": "RI-12",
+      "name": "Lac du Bois road circuit",
+      "accepted": false,
+      "reason": "Restored to coarse control points after rendered QA found unreliable loop topology.",
+      "originalPointCount": 5,
+      "candidatePointCount": 2323,
+      "coarseDistanceKm": 77.4,
+      "routedDistanceKm": 148.7,
+      "publishedDistanceKm": null,
+      "maxWaypointSnapMetres": 659
+    },
+    {
+      "id": "RI-13",
+      "name": "EVADRS Elk Valley bundle",
+      "accepted": false,
+      "reason": "Skipped by route-specific safety rule; car routing would misrepresent this record.",
+      "originalPointCount": 5
+    },
+    {
+      "id": "RI-14",
+      "name": "Koocanusa motorized network",
+      "accepted": false,
+      "reason": "Skipped by route-specific safety rule; car routing would misrepresent this record.",
+      "originalPointCount": 6
+    },
+    {
+      "id": "RI-15",
+      "name": "Whiteswan / Lussier FSR",
+      "accepted": false,
+      "reason": "waypoint snap 3912 m; published-distance ratio 3.65",
+      "originalPointCount": 3,
+      "candidatePointCount": 1732,
+      "coarseDistanceKm": 30.3,
+      "routedDistanceKm": 91.3,
+      "publishedDistanceKm": 25,
+      "maxWaypointSnapMetres": 3912
+    },
+    {
+      "id": "RI-16",
+      "name": "Top of the World access",
+      "accepted": false,
+      "reason": "published-distance ratio 2.37",
+      "originalPointCount": 3,
+      "candidatePointCount": 2477,
+      "coarseDistanceKm": 49.4,
+      "routedDistanceKm": 123.3,
+      "publishedDistanceKm": 52,
+      "maxWaypointSnapMetres": 1537
+    },
+    {
+      "id": "RI-17",
+      "name": "Settlers / Palliser / White River",
+      "accepted": false,
+      "reason": "Skipped by route-specific safety rule; car routing would misrepresent this record.",
+      "originalPointCount": 3
+    },
+    {
+      "id": "RI-18",
+      "name": "Bull River–Hartley Pass–Fernie",
+      "accepted": false,
+      "reason": "waypoint snap 2911 m",
+      "originalPointCount": 4,
+      "candidatePointCount": 2022,
+      "coarseDistanceKm": 40.3,
+      "routedDistanceKm": 97.2,
+      "publishedDistanceKm": 78,
+      "maxWaypointSnapMetres": 2911
+    },
+    {
+      "id": "RI-19",
+      "name": "Fernie–Flathead historic loop",
+      "accepted": false,
+      "reason": "Skipped constraint; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 5
+    },
+    {
+      "id": "RI-20",
+      "name": "Elk River / Elk Lakes trailhead",
+      "accepted": false,
+      "reason": "published-distance ratio 1.66",
+      "originalPointCount": 3,
+      "candidatePointCount": 1555,
+      "coarseDistanceKm": 40.8,
+      "routedDistanceKm": 106.3,
+      "publishedDistanceKm": 64,
+      "maxWaypointSnapMetres": 1987
+    },
+    {
+      "id": "RI-21",
+      "name": "Forestry Trunk Road",
+      "accepted": false,
+      "reason": "waypoint snap 5842 m",
+      "originalPointCount": 8,
+      "candidatePointCount": 13925,
+      "coarseDistanceKm": 697.8,
+      "routedDistanceKm": 1249.8,
+      "publishedDistanceKm": 1000,
+      "maxWaypointSnapMetres": 5842
+    },
+    {
+      "id": "RI-22",
+      "name": "Smith-Dorrien / Spray Lakes",
+      "accepted": false,
+      "reason": "waypoint snap 4284 m",
+      "originalPointCount": 4,
+      "candidatePointCount": 1642,
+      "coarseDistanceKm": 61,
+      "routedDistanceKm": 86.7,
+      "publishedDistanceKm": 62,
+      "maxWaypointSnapMetres": 4284
+    },
+    {
+      "id": "RI-23",
+      "name": "Mount 7 / Bowle-Evans",
+      "accepted": true,
+      "reason": "Road-matched to OpenStreetMap geometry.",
+      "originalPointCount": 3,
+      "candidatePointCount": 504,
+      "coarseDistanceKm": 11.9,
+      "routedDistanceKm": 20.1,
+      "publishedDistanceKm": 15,
+      "maxWaypointSnapMetres": 564
+    },
+    {
+      "id": "RI-24",
+      "name": "Okanagan Falls OHV system",
+      "accepted": false,
+      "reason": "Skipped trail-system; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    },
+    {
+      "id": "RI-25",
+      "name": "Bear Creek OHV system",
+      "accepted": false,
+      "reason": "Skipped trail-system; a road router cannot represent an area or closure reliably.",
+      "originalPointCount": 4
+    }
+  ],
+  "loopMatching": {
+    "generatedAt": "2026-09-09",
+    "method": "OSRM Trip closed-circuit optimization",
+    "results": [
+      {
+        "id": "VI-01",
+        "name": "Vancouver Island Grand Loop",
+        "accepted": true,
+        "reason": "Closed OSM road circuit optimized from unordered loop stops.",
+        "originalPointCount": 13,
+        "candidatePointCount": 22218,
+        "routedDistanceKm": 1456,
+        "publishedDistanceKm": 1700,
+        "publishedRatio": 0.86,
+        "maxWaypointSnapMetres": 1655,
+        "outputClosureMetres": 0,
+        "stopOrder": [
+          0,
+          11,
+          4,
+          8,
+          7,
+          6,
+          5,
+          9,
+          10,
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "id": "VI-02",
+        "name": "Pacific Marine Circle",
+        "accepted": true,
+        "reason": "Closed OSM road circuit optimized from unordered loop stops.",
+        "originalPointCount": 6,
+        "candidatePointCount": 5608,
+        "routedDistanceKm": 262,
+        "publishedDistanceKm": 289,
+        "publishedRatio": 0.91,
+        "maxWaypointSnapMetres": 66,
+        "outputClosureMetres": 0,
+        "stopOrder": [
+          0,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "id": "VI-13",
+        "name": "North Island 1000",
+        "accepted": true,
+        "reason": "Closed OSM road circuit optimized from unordered loop stops.",
+        "originalPointCount": 10,
+        "candidatePointCount": 14414,
+        "routedDistanceKm": 927.6,
+        "publishedDistanceKm": 1000,
+        "publishedRatio": 0.93,
+        "maxWaypointSnapMetres": 209,
+        "outputClosureMetres": 0,
+        "stopOrder": [
+          0,
+          8,
+          6,
+          5,
+          4,
+          3,
+          7,
+          2,
+          1
+        ]
+      },
+      {
+        "id": "VI-20",
+        "name": "Tugwell–Alligator loop",
+        "accepted": true,
+        "reason": "Closed OSM road circuit optimized from unordered loop stops.",
+        "originalPointCount": 4,
+        "candidatePointCount": 1395,
+        "routedDistanceKm": 80.1,
+        "publishedDistanceKm": 60,
+        "publishedRatio": 1.34,
+        "maxWaypointSnapMetres": 166,
+        "outputClosureMetres": 0,
+        "stopOrder": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "VI-22",
+        "name": "Youbou–Port Alberni–Bamfield",
+        "accepted": true,
+        "reason": "Closed OSM road circuit optimized from unordered loop stops.",
+        "originalPointCount": 5,
+        "candidatePointCount": 5280,
+        "routedDistanceKm": 344.8,
+        "publishedDistanceKm": 300,
+        "publishedRatio": 1.15,
+        "maxWaypointSnapMetres": 1948,
+        "outputClosureMetres": 0,
+        "stopOrder": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "id": "RI-12",
+        "name": "Lac du Bois road circuit",
+        "accepted": true,
+        "reason": "Closed OSM road circuit optimized from unordered loop stops.",
+        "originalPointCount": 5,
+        "candidatePointCount": 2256,
+        "routedDistanceKm": 144.5,
+        "publishedDistanceKm": null,
+        "publishedRatio": null,
+        "maxWaypointSnapMetres": 659,
+        "outputClosureMetres": 0,
+        "stopOrder": [
+          0,
+          3,
+          2,
+          1
+        ]
+      }
+    ]
+  }
+}

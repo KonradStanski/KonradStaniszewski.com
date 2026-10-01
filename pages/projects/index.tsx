@@ -11,6 +11,12 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "BC Backroads",
+    description: "Explore 69 researched adventure-motorcycle routes, remote road corridors, technical riding areas, and current access constraints across British Columbia and the Canadian Rockies",
+    liveUrl: "/projects/bc-backroads",
+    githubUrl: "https://github.com/KonradStanski/KonradStaniszewski.com/tree/master/components/bc-backroads",
+  },
+  {
     title: "UofA GPA Calculator",
     description: "Calculate your University of Alberta GPA from your transcript with interactive charts",
     liveUrl: "/projects/gpa-calculator",

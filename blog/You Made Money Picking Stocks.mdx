@@ -1,7 +1,7 @@
 ---
-title: "Stock Picking, Diversification, and Expected Returns"
+title: "Can Stock Picking Reliably Beat the Market?"
 slug: did-stock-picking-make-you-money
-description: Why uninformed stock selection increases risk without increasing expected returns.
+description: Why stock picking without a demonstrated edge adds uncompensated company-specific risk, lowers expected returns after costs, and produces worse risk-adjusted outcomes than broad diversification.
 date: 2026-08-16
 tags:
   - investing
@@ -10,169 +10,198 @@ layout: editorial
 status: completed
 ---
 
-This article explains why an uninformed investor should not expect stock picking to beat a broad, low-cost index. A stock-picking edge is a repeatable ability to earn positive expected *alpha*. Alpha is return above an appropriate risk-adjusted benchmark after costs. **That is, an edge lets you identify stocks that will perform better than their current prices imply. It is not the ability to recognize good companies.** Those prices already reflect trades by funds, analysts, market makers, and specialist investors.
+A typical retail investor should not expect stock picking to beat a diversified market fund. Most stock-picking ideas rely on public facts: a company is growing, profitable, or makes a good product. Those facts already influence the stock price. Expecting a company to succeed does not show that its stock is underpriced.
 
-## A good company is not necessarily a good stock
+Outperformance requires an edge: a repeatable advantage that identifies an important error in the market's expectations before other investors correct it. A typical retail investor working from the same public information as everyone else does not have such an advantage. Without one, choosing individual stocks is a wager on company-specific outcomes, not a strategy with a higher expected return.
 
-Owning a stock is a claim on cash that the company may return to shareholders in the future. A simplified valuation is:
+Stock picking therefore adds risk without increasing expected return before costs, producing worse risk-adjusted outcomes. Trading and research costs lower expected return further. A retail investor without a demonstrated edge should use a low-cost diversified fund rather than trying to pick winners.
 
-$$
-P_0 = \sum_{t=1}^{\infty} \frac{\mathbb{E}_0[CF_t]}{(1+r_t)^t}
-$$
+## What a stock price reflects
 
-In the equation, CF is cash flow, E is the market's current expectation, and r is the discount rate. Future cash is discounted because later and riskier money is worth less today. The expected growth is already in the price.
+A stock's market price is not set by the company, an analyst report, or a price target. It emerges from trading. [Buyers submit bids and sellers submit offers](https://www.investor.gov/introduction-investing/investing-basics/glossary/stock-quotes), and trades occur when compatible orders meet. Each completed trade becomes the stock's latest market price.
 
-When a company reports results, investors update that valuation:
+Under standard [equity valuation](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/lectures/val.html), a share is a residual claim on the business: shareholders own what remains after operating expenses, taxes, reinvestment, and debt payments.
 
-$$
-\begin{aligned}
-P_{\mathrm{before}} &= PV\left(\mathbb{E}_{\mathrm{before}}[CF]\right) \\
-P_{\mathrm{after}} &= PV\left(\mathbb{E}_{\mathrm{after}}[CF]\right)
-\end{aligned}
-$$
+In plain English, the valuation equation says to estimate the cash shareholders can receive in every future period, account for uncertainty in those estimates, discount each expected payment by the return investors require for waiting and bearing risk, and then add the discounted payments. Companies can return that cash through dividends and share buybacks, or shareholders may receive it through an acquisition or liquidation.
 
-The stock rises when the revised value is higher and falls when it is lower. An earnings beat compares one reported number with one estimate. A valuation update incorporates new information about every future quarter. The two can point in opposite directions.
+An investor can also realize value by selling the stock for more than they paid. That future sale price is not a separate source of value. It is what the next buyer is willing to pay for the cash the share can produce after the sale. From the investor's perspective, returns can therefore arrive as cash distributions or as a capital gain, but both ultimately depend on the company's capacity to produce cash for shareholders.
+
+Investors disagree about future cash flows and the appropriate discount rate. They use public disclosures, industry data, and proprietary research to decide what prices they are willing to accept. The market price is set where the investors currently willing to buy meet those currently willing to sell. Because investors trade on their information and expectations, the resulting price aggregates the views on which market participants have acted.
+
+This process is called [price discovery](https://www.nyse.com/article/understanding-the-market-for-us-equity-market-data). If a trader concludes that a stock is worth more than its current price, buying consumes the shares offered at the lowest prices. Enough buying pushes subsequent trades higher. A trader who concludes that the stock is overpriced can sell, producing pressure in the opposite direction. Competition reduces the apparent opportunity until buying or selling is no longer attractive after accounting for uncertainty and costs. This is how information becomes incorporated into the market price.
+
+An expectation “reflected in the price” therefore does not mean management guidance, analyst consensus, or an investment bank's price target. Those are individual public forecasts. It means the assumptions about future cash flows and risk that are consistent with the price at which the market is actually trading. When you buy a stock, that market price is the hurdle your forecast must clear. You do not receive the company's expected future success for free.
+
+Holding everything else constant, suppose one company's price is consistent with profit growth of 50%, but profit grows by 30%. The company performed well, but not well enough to justify what buyers had paid. Now suppose another company's price is consistent with profit falling by 50%, but profit falls by only 20%. The company is still struggling, but the result is better than the price assumed. All else equal, the first stock can fall while the second rises.
 
 <ExpectationsComparison />
 
-Meta beat the consensus estimate for the quarter just completed. Its shares still fell because the report also implied less near-term revenue and more investment than investors had expected. Tesla missed the quarterly estimate. Its shares rose after the company moved lower-cost vehicles forward, changing expectations for later cash flows.
+That is why “I think this company will do well” is not yet a stock-picking thesis. It describes the company but says nothing about whether the stock is underpriced. A useful thesis has to answer three harder questions:
 
-The lesson is not that guidance always determines the next day's return. It is that “good results” and “bad results” have no fixed relationship with returns. A stock picker needs to forecast how the information will differ from what the price already assumes. Recognizing that Meta is profitable or that Tesla can sell electric cars is not that forecast.
+- What future does the current price appear to assume?
+- Which assumption is materially wrong?
+- Why does the picker have a reason to know better than the market?
 
-<TechnicalNote title="Technical note: prices, risk, and alpha">
+Those answers distinguish a view about the business from a view about whether its stock is attractively priced.
 
-[Ball and Brown (1968)](https://doi.org/10.2307/2490232) estimated the earnings the market could have expected, separated the unexpected component, and compared it with abnormal stock returns. Returns moved with the unexpected information, not with whether earnings were merely positive.
+<TechnicalNote title="Technical note: expectations, risk, and alpha">
 
-[Fama's 1970 review of efficient markets](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.1970.tb00518.x) does not claim that every price is correct. Its useful point here is that public information attracts competition and is incorporated into prices through trading.
+[Ball and Brown (1968)](https://doi.org/10.2307/2490232) estimated the earnings information investors could have expected and separated it from the unexpected component. Abnormal returns were associated with the unexpected component, not simply with whether reported earnings were positive.
 
-[Fama and French (1992)](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.1992.tb04398.x) and [Fama and French (1993)](https://doi.org/10.1016/0304-405X(93)90023-5) show that returns also vary with systematic risk exposures. In a factor model:
+[Fama's 1970 review of efficient markets](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.1970.tb00518.x) explains how competition among investors tends to incorporate public information into prices through trading.
 
-$$
-\alpha_p = R_p - R_p^{\mathrm{factor\ model}}
-$$
+[Fama and French (1992)](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.1992.tb04398.x) and [Fama and French (1993)](https://doi.org/10.1016/0304-405X(93)90023-5) show that stock returns also vary with exposures to broad return factors such as the market, company size, and value. A fair benchmark must account for these exposures.
 
-Realized alpha contains luck. Skill means positive expected alpha before the outcome is known.
-
-</TechnicalNote>
-
-## The market average is mathematically unbeatable by active investors collectively
-
-All investors together own the market. Passive investors hold each security at its market weight. Active investors deviate from those weights. Their overweights and underweights must cancel in aggregate.
-
-<ActiveArithmetic />
-
-The equations describe a transfer, not a claim that every active investor earns the same return. If one active investor gains a dollar relative to the market, other active investors must collectively lose a dollar relative to it before costs. Their overweights are the winners' underweights, and vice versa.
-
-Stock selection therefore cannot create additional return for active investors as a group. It only determines which active investors receive more or less of the market's return. Trading and research then reduce the amount the group keeps.
-
-This does not prove that no investor has skill. It shows what skill must accomplish: take return from other active investors by identifying mispriced securities before they do. An uninformed investor has no reason to expect to be on the winning side of that transfer, while still paying its costs.
-
-<TechnicalNote title="Technical note: Sharpe's arithmetic">
-
-[William Sharpe's “The Arithmetic of Active Management”](https://web.stanford.edu/~wfsharpe/art/active/active.htm) derives this identity without assuming efficient markets. Active investors can beat the market individually, but they cannot do so collectively. Their aggregate return equals the market before costs and falls below it after costs.
+In a factor model, *alpha* is the expected return left after accounting for those exposures. A return above the model in one month or one year is a realized abnormal return. It contains both any true alpha and random noise, so a short run of outperformance is weak evidence of skill.
 
 </TechnicalNote>
 
-## What stock picking and concentration actually produce
+## A stock-picking edge requires more than public information
 
-Without positive expected alpha, concentration adds stock-specific variance. It widens the distribution of outcomes without raising its mean before costs.
+An investor in a broad market index does not need a stock-picking edge to earn the market's expected return. That expected return is compensation for bearing market risk, not a reward for selecting particular companies. A stock picker needs an edge to expect persistent *alpha*: risk-adjusted outperformance caused by the selection process and measured after its additional costs.
 
-### A worked distribution
+Reading public filings, following the news, using a company's products, or forming an opinion about its industry does not by itself create that advantage. A real edge must identify a material error in the cash-flow or risk assumptions reflected in the current price, explain why the picker can detect it before other traders, and keep working across many decisions after costs. A story for one stock that later rises does not meet that standard.
 
-Start with $10,000. The index earns 8% each year. A zero-alpha picker has equal odds of earning 28% or losing 12% each year:
+Some documented advantages are costly and highly specialized. For example, [Katona, Painter, Patatoukas, and Zeng](https://doi.org/10.1017/S0022109023001448) found that satellite-derived parking-lot data helped predict quarterly results for major U.S. retailers. Reading the same earnings releases as everyone else, liking a product, or expecting an industry to grow supplies no comparable advantage. A thesis needs to identify a specific expectation in the price that is wrong and explain why the picker knows better.
 
-$$
-\begin{aligned}
-\mathbb{E}[R_{\mathrm{picker}}] &= \frac{1}{2}(28\%) + \frac{1}{2}(-12\%) \\
-&= 8\%
-\end{aligned}
-$$
+## Past stock performance does not establish future outperformance
 
-Holding the market return fixed isolates the effect of concentration. Real market returns vary, but both investors are exposed to that common risk.
+“XYZ has been doing well for a few years” is not a reason to buy the stock. It says nothing about whether the stock is underpriced. Buying on that basis is a wager that recent success will continue strongly enough to exceed the expectations already built into today's price.
 
-<WorkedDistributionExamples />
+If the business has grown quickly, that public growth is already part of the market's expectations. If the stock price has risen, the old return belongs to the investors who already owned it. Neither fact gives a new buyer an edge. Without one, the buyer is replacing diversified market exposure with uncompensated company-specific risk: a wider range of outcomes, no higher expected return before costs, and a lower expected return after costs.
 
-### Extending the same model
+Academic research gives no support to the rule “buy one stock because it has risen for several years.” [De Bondt and Thaler (1985)](https://doi.org/10.1111/j.1540-6261.1985.tb05004.x) found that extreme three-year winners subsequently underperformed extreme losers by 24.6 percentage points on a market-adjusted basis. [Lakonishok, Shleifer, and Vishny (1994)](https://doi.org/10.1111/j.1540-6261.1994.tb04772.x) found that investors extrapolated strong past growth in sales, earnings, and cash flow too far into the future. A retail picker following past winners repeats this mistake: the previous gains have already raised the price, yet the picker treats those gains as evidence that the higher price will keep rising. The result is paying more for optimism that other investors have already acted on, without evidence of future outperformance.
 
-<OutcomeDistribution />
+### Concentrated losses among pandemic-era growth stocks
 
-<TechnicalNote title="Evidence: Fama and French (2010)">
-
-[Fama and French's “Luck versus Skill in the Cross-Section of Mutual Fund Returns”](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.2010.01598.x) simulates the fund returns expected when true alpha is zero, then compares that distribution with observed mutual-fund returns. Few funds produced enough benchmark-adjusted return to cover their costs. Even among professionals, the winners were difficult to distinguish from the right tail created by luck.
-
-</TechnicalNote>
-
-### Thirty years after costs
-
-Costs break the zero-cost tie. The next chart applies an illustrative 1% annual cost to the picker.
-
-<ThirtyYearComparison />
-
-### Observed outcomes for retail investors
-
-The aggregate active return is not the return received by each investor. [Barber and Odean](https://faculty.haas.berkeley.edu/odean/papers/returns/individual_investor_performance_final.pdf) measured the distribution across 62,439 self-directed brokerage households.
-
-<RetailPerformanceEvidence />
-
-Before costs, 49.3% beat the market. After costs, 43.4% did. The median shortfall was 0.14 percentage points per month, about 1.7 percentage points per year. One-quarter trailed by more than 0.73 percentage points per month. The median household held 2.61 stocks; the mean held 4.3.
-
-The index removes this stock-selection dispersion, not market risk. Without positive expected alpha, accepting it is an uncompensated gamble. The most active fifth also earned half the net Sharpe ratio of the least active fifth: 0.092 versus 0.180.
-
-The selection process was not random. [Barber and Odean (2008)](https://doi.org/10.1093/rfs/hhm079) found that individual investors disproportionately bought stocks with news, extreme returns, or unusually high volume. In Robinhood data, the stocks attracting the most intense daily buying subsequently earned an average [−4.7% abnormal return over 20 trading days](https://doi.org/10.1111/jofi.13183). Attention was not an edge.
-
-### A historical example of concentrated losses
-
-Concentrated portfolios expose investors to company-specific failures that a broad index dilutes. Long-run data show that these failures are common.
-
-J.P. Morgan reports that [nearly 45% of Russell 3000 constituents since 1980 lost at least 70% from a peak and never recovered](https://www.jpmorgan.com/content/dam/jpmorgan/documents/wealth-management/mid-year-outlook-2026.pdf). For technology stocks, the figure was 59%. Its concentrated-stock research also found that two-thirds of stocks underperformed the Russell 3000 and that [75% of concentrated stockholders would have benefited from some diversification](https://privatebank.jpmorgan.com/content/dam/jpm-wm-aem/global/pb/en/insights/eye-on-the-market/eotm-the-agony-and-the-ecstasy.pdf).
-
-On November 16, 2020, an article named [Zoom, DocuSign, Teladoc, Wayfair, and Peloton](https://www.fool.com/investing/2020/11/16/zoom-docusign-teladoc-wayfair-and-peloton-will-als/) as five pandemic winners that would continue to perform. Each had already gained between 119% and 493% that year.
+On November 16, 2020, an article argued that [Zoom, DocuSign, Teladoc, Wayfair, and Peloton would continue to beat the market in 2021](https://www.fool.com/investing/2020/11/16/zoom-docusign-teladoc-wayfair-and-peloton-will-als/). Each had already gained between 119% and 493% that year.
 
 <HotStockLossExample />
 
-These were real companies with products, revenue, and plausible growth stories. They were also exposed to the same reversal in pandemic demand and growth-stock valuations. Five holdings did not provide five independent bets.
+Five company names created the appearance of diversification, but all five depended on similar conditions: pandemic-era demand remaining strong and investors continuing to pay high prices for growth. When those conditions reversed, the equal-weighted cohort lost 79% through the end of 2025 while SPY roughly doubled.
 
-This one cohort does not estimate the probability of loss. It shows the consequence the long-run base rates permit: a reasonable-sounding theme can lose 79% while the broad market doubles. An index can also suffer large market-wide drawdowns, but one failed narrative cannot dominate it in the same way.
+## Stock pickers collectively fall behind after costs
 
-### Observed individual-stock returns
+For this argument, “the market” means the complete investable market in scope, and passive investors hold every security in proportion to its market value. Active investors are everyone who deviates from those weights. Passive holdings mirror the market, so the securities left for active investors collectively must also mirror the market. Before costs, the average active dollar therefore earns the market return. One active investor's outperformance is offset by another's underperformance.
 
-Bessembinder found that four out of seven U.S. stocks had lifetime returns below one-month Treasury bills. The best-performing 4% created wealth equal to the market's entire net gain above Treasury bills. The other stocks collectively matched Treasury bills.
+Stock selection cannot create additional benchmark-relative return for active investors as a group. It only determines which active investors receive more or less than the market return. Fees, spreads, market impact, research, and incremental taxes then reduce what active investors collectively keep. A passive fund also has costs, so the fair comparison is the difference between active and passive costs.
+
+This identity does not rule out skill. It makes zero alpha the sensible starting assumption until an investor supplies evidence to the contrary. Any advantage from analysis, portfolio construction, or execution must survive risk adjustment and additional costs.
+
+<TechnicalNote title="Technical note: Sharpe's arithmetic">
+
+[William Sharpe's “The Arithmetic of Active Management”](https://web.stanford.edu/~wfsharpe/art/active/active.htm) derives this identity without assuming that markets are perfectly efficient. Properly measured, the value-weighted active portfolio equals the market before costs. If active investing costs more than holding the comparable passive portfolio, active investors collectively keep less after costs.
+
+</TechnicalNote>
+
+## Stock picking adds risk without increasing expected return
+
+The simulation isolates the effect of concentration by giving both approaches the same expected market return while adding independent company-specific risk to the stock picker.
+
+<NoEdgeMonteCarlo />
+
+The blue index paths vary because the market itself is uncertain. The amber picker paths spread farther because they contain the same market risk plus company-specific risk. Before additional costs, both approaches have the same expected ending value. The picker's distribution is wider, its median is lower, and most simulated picker paths finish below the index path that experienced the same market conditions. Additional trading and research costs would shift the picker distribution lower.
+
+### Active mutual funds rarely overcome their costs
+
+The simulation shows how apparent winners can arise even when true alpha is zero. [Fama and French's “Luck versus Skill in the Cross-Section of Mutual Fund Returns”](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.2010.01598.x) asks whether observed professional winners were more numerous than luck alone could explain.
+
+The authors studied 3,156 U.S. active equity funds from 1984–2006. Their bootstrap tests found that few funds produced enough benchmark-adjusted expected return to cover their costs, and the strongest observed winners were difficult to distinguish from lucky funds. Both their three-factor and four-factor benchmarks produced the same broad result.
+
+<ProfessionalFundCostEvidence />
+
+Before expenses, the average benchmark-adjusted result was close to zero. After expenses, all four estimates were negative. Professional managers have more research, data, and execution resources than retail investors, but those resources are costly and do not create an advantage for the group as a whole.
+
+### Most retail stock pickers underperformed after costs
+
+The aggregate active return is not the return received by every investor. [Barber and Odean](https://faculty.haas.berkeley.edu/odean/papers/returns/Individual_Investor_Performance_Final.pdf) studied the common-stock holdings of 66,465 households at one U.S. discount broker from 1991–1996. For their cross-sectional return table, they used 62,439 households with more than 12 months of records and compared average monthly returns with a value-weighted U.S. stock-market index.
+
+<RetailPerformanceEvidence />
+
+Before transaction costs, 49.3% of those households beat the market in average monthly return. After costs, 43.4% did. The median monthly shortfall after costs was 0.14 percentage points, about 1.7 percentage points on a simple annualized basis. One-quarter trailed by at least 0.73 percentage points per month.
+
+The common-stock accounts observed at the broker were also concentrated. Across the broader 66,465-household sample, the median of each household's time-averaged holdings was 2.61 stocks, and the mean was 4.3.
+
+Differences in market and factor exposure contributed to the range of outcomes. A broad index greatly reduces the company-specific portion of that dispersion.
+
+### More frequent trading increased the shortfall
+
+<RetailActivityEvidence />
+
+The most active households did not earn higher returns before trading costs. After costs, their benchmark-adjusted shortfall was much larger. Trading more did not improve gross returns and enlarged the shortfall after costs.
+
+Separate studies document one way investors choose stocks. [Barber and Odean (2008)](https://doi.org/10.1093/rfs/hhm079) found that individual investors disproportionately bought stocks with news, extreme returns, or unusually high volume. In later Robinhood data, the stocks with the most intense daily buying subsequently earned an average [−4.7% abnormal return over 20 trading days](https://doi.org/10.1111/jofi.13183). In that sample, extreme attention-driven buying was not an edge.
+
+### Concentration increases exposure to permanent losses
+
+Concentrated portfolios expose investors to severe company-specific drawdowns. A diversified index still owns losers, but the loss of one ordinary constituent cannot dominate the portfolio as it can in an account holding only a few stocks.
+
+By September 2020, [nearly 45% of Russell 3000 constituents since 1980 had fallen at least 70% from a peak without recovering](https://www.jpmorgan.com/content/dam/jpmorgan/documents/wealth-management/mid-year-outlook-2026.pdf). Among technology stocks, the figure was 59%.
+
+A separate J.P. Morgan study covering 1980–2014 found that two-thirds of stocks underperformed the Russell 3000 over their listed lifetimes.
+
+### Diversification captures the few stocks that drive market wealth creation
+
+[Bessembinder](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2900447) studied U.S. common stocks from 1926–2016. Four out of seven had a buy-and-hold return over their full listed lifetime below that of one-month Treasury bills. Just 4.31% of companies accounted for all net wealth creation above Treasury bills; among the remaining companies, positive and negative contributions canceled out. The chart below shows the exact counts.
 
 <WealthCreationIllustration />
 
-A picker must identify those rare winners in advance. A broad index owns them and increases their weights as their market values rise.
+The market's long-run wealth creation was concentrated in a small minority of companies. A picker who owns only a few stocks can easily omit the rare outsized winners. A total-market capitalization-weighted index owns them automatically, and a successful company's weight rises as its market value grows.
 
-A claimed edge should state what the price implies, why that expectation is wrong, what would disprove the thesis, and which risk-adjusted benchmark the investment should beat. If those claims cannot be stated and tested, a broad diversified portfolio is the appropriate default.
+## A claimed edge must be testable and survive costs
+
+Before buying, a testable stock thesis should state:
+
+- which cash-flow or risk assumption in the price appears wrong;
+- what evidence supports that disagreement;
+- the time horizon and what would disprove the thesis;
+- the intended position size; and
+- an investable, risk-appropriate benchmark chosen in advance.
+
+Measure the result after the additional fees, spreads, taxes, and research costs caused by the strategy.
+
+These conditions are necessary, not sufficient. A positive return does not prove that stock picking made money; a positive benchmark-adjusted return does not prove skill after one short period. For an investor seeking equity exposure without a demonstrated post-cost edge, a low-cost diversified fund is the appropriate default for the equity portion of the portfolio.
+
+## Conclusion
+
+This article is about a common retail-investing error: mistaking a plausible story about a company for evidence that its stock is underpriced. A typical retail investor choosing companies because they look successful, have risen, or seem likely to grow has no demonstrated advantage over the market participants who helped set the price. That choice is a speculative bet, not a source of expected outperformance.
+
+Compared with a diversified portfolio carrying similar market risk, concentrating in a few stocks adds company-specific risk that the market does not pay investors to bear. Before additional costs, it can leave expected return unchanged while spreading the possible outcomes much farther apart, which means less expected return for each unit of risk. Fees, spreads, taxes, and research costs then push expected return lower. The spectacular winners are not proof that the choice had favorable odds; they are the visible upside of a wider distribution whose downside includes permanent loss and, for any individual stock, the loss of the entire amount invested.
+
+An investor does not need to make these bets to earn the market's expected return. Without a demonstrated ability to outperform after risk and additional costs, a low-cost diversified fund remains the more rational default for long-term equity investing.
 
 ## References
-
-### Videos
-
-- Ben Felix, [“Picking Stocks”](https://www.youtube.com/watch?v=AecvTErBQY8) (2018)
-- Ben Felix, [“The Risk of (Individual) Stocks”](https://www.youtube.com/watch?v=RxCqxhRsHiY) (2025)
-- Ben Felix, [“Efficient Capital Markets Explained”](https://www.youtube.com/watch?v=yco0sC7AJ2U) (2019)
 
 ### Papers
 
 - Ray Ball and Philip Brown, [“An Empirical Evaluation of Accounting Income Numbers”](https://doi.org/10.2307/2490232), 1968
-- William F. Sharpe, [“The Arithmetic of Active Management”](https://web.stanford.edu/~wfsharpe/art/active/active.htm), 1991
 - Eugene F. Fama, [“Efficient Capital Markets: A Review of Theory and Empirical Work”](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.1970.tb00518.x), 1970
+- Werner F. M. De Bondt and Richard Thaler, [“Does the Stock Market Overreact?”](https://doi.org/10.1111/j.1540-6261.1985.tb05004.x), 1985
+- William F. Sharpe, [“The Arithmetic of Active Management”](https://web.stanford.edu/~wfsharpe/art/active/active.htm), 1991
 - Eugene F. Fama and Kenneth R. French, [“The Cross-Section of Expected Stock Returns”](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.1992.tb04398.x), 1992
 - Eugene F. Fama and Kenneth R. French, [“Common Risk Factors in the Returns on Stocks and Bonds”](https://doi.org/10.1016/0304-405X(93)90023-5), 1993
+- Josef Lakonishok, Andrei Shleifer, and Robert W. Vishny, [“Contrarian Investment, Extrapolation, and Risk”](https://doi.org/10.1111/j.1540-6261.1994.tb04772.x), 1994
+- Brad M. Barber and Terrance Odean, [“Trading Is Hazardous to Your Wealth”](https://faculty.haas.berkeley.edu/odean/papers/returns/Individual_Investor_Performance_Final.pdf), 2000
+- Brad M. Barber and Terrance Odean, [“All That Glitters: The Effect of Attention and News on the Buying Behavior of Individual and Institutional Investors”](https://doi.org/10.1093/rfs/hhm079), 2008
 - Eugene F. Fama and Kenneth R. French, [“Luck versus Skill in the Cross-Section of Mutual Fund Returns”](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.2010.01598.x), 2010
 - Hendrik Bessembinder, [“Do Stocks Outperform Treasury Bills?”](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2900447), 2018
-- Brad M. Barber and Terrance Odean, [“Trading Is Hazardous to Your Wealth”](https://faculty.haas.berkeley.edu/odean/papers%20current%20versions/individual_investor_performance_final.pdf), 2000
-- Brad M. Barber and Terrance Odean, [“All That Glitters: The Effect of Attention and News on the Buying Behavior of Individual and Institutional Investors”](https://doi.org/10.1093/rfs/hhm079), 2008
 - Brad M. Barber, Xing Huang, Terrance Odean, and Christopher Schwarz, [“Attention-Induced Trading and Returns: Evidence from Robinhood Users”](https://doi.org/10.1111/jofi.13183), 2022
+- Zsolt Katona, Marcus O. Painter, Panos N. Patatoukas, and Jean Zeng, [“On the Capital Market Consequences of Big Data: Evidence from Outer Space”](https://doi.org/10.1017/S0022109023001448), 2025
 
 ### Reports
 
-- J.P. Morgan, [“The Agony and the Ecstasy: The Risks and Rewards of a Concentrated Stock Position”](https://www.jpmorgan.com/content/dam/jpmorgan/documents/wealth-management/the-agony-and-the-ecstasy-2024.pdf), 2024
+- J.P. Morgan, [“The Agony and the Ecstasy: The Risks and Rewards of a Concentrated Stock Position”](https://privatebank.jpmorgan.com/content/dam/jpm-wm-aem/global/pb/en/insights/eye-on-the-market/eotm-the-agony-and-the-ecstasy.pdf), 2014
 - J.P. Morgan, [*Mid-Year Outlook 2026*](https://www.jpmorgan.com/content/dam/jpmorgan/documents/wealth-management/mid-year-outlook-2026.pdf), 2026
 
-### Articles and data
+### Articles and price data
 
 - Rick Munarriz, [“Zoom, DocuSign, Teladoc, Wayfair, and Peloton Will Also Win in 2021”](https://www.fool.com/investing/2020/11/16/zoom-docusign-teladoc-wayfair-and-peloton-will-als/), 2020
-- Yahoo Finance, adjusted closing prices for [ZM](https://finance.yahoo.com/quote/ZM/history/), [DOCU](https://finance.yahoo.com/quote/DOCU/history/), [TDOC](https://finance.yahoo.com/quote/TDOC/history/), [W](https://finance.yahoo.com/quote/W/history/), [PTON](https://finance.yahoo.com/quote/PTON/history/), and [SPY](https://finance.yahoo.com/quote/SPY/history/), November 17, 2020 through December 31, 2025
+- Yahoo Finance adjusted closing prices for [ZM](https://finance.yahoo.com/quote/ZM/history/), [DOCU](https://finance.yahoo.com/quote/DOCU/history/), [TDOC](https://finance.yahoo.com/quote/TDOC/history/), [W](https://finance.yahoo.com/quote/W/history/), [PTON](https://finance.yahoo.com/quote/PTON/history/), and [SPY](https://finance.yahoo.com/quote/SPY/history/), November 17, 2020 through December 31, 2025. The comparison invests equal amounts at the start and does not rebalance.
+
+### Further viewing
+
+- Ben Felix, [“Picking Stocks”](https://www.youtube.com/watch?v=AecvTErBQY8) (2018)
+- Ben Felix, [“The Risk of (Individual) Stocks”](https://www.youtube.com/watch?v=RxCqxhRsHiY) (2025)
+- Ben Felix, [“Efficient Capital Markets Explained”](https://www.youtube.com/watch?v=yco0sC7AJ2U) (2019)
 
 *Educational only. This is not individualized investment advice.*

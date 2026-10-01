@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>VI-08 · Alice Lake Loop</name>
+    <desc>Signed karst-country loop near Port McNeill and Port Alice; vehicle access to Alice Lake itself is interrupted. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Alice Lake Loop</name>
+    <type>primary</type>
+    <extensions>
+      <bcbr:routeId>VI-08</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>5</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="50.57" lon="-127.09" />
+      <trkpt lat="50.54" lon="-127.29" />
+      <trkpt lat="50.43" lon="-127.49" />
+      <trkpt lat="50.35" lon="-127.3" />
+      <trkpt lat="50.57" lon="-127.09" />
+    </trkseg>
+  </trk>
+</gpx>

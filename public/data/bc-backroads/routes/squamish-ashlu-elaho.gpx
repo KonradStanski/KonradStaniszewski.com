@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>LM-04 · Squamish River / Ashlu / Elaho</name>
+    <desc>A major remote corridor in normal years, but the current Mud Creek and Ashlu bridge closures break through access. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Squamish River / Ashlu / Elaho</name>
+    <type>constraint</type>
+    <extensions>
+      <bcbr:routeId>LM-04</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>4</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="49.701" lon="-123.156" />
+      <trkpt lat="49.84" lon="-123.263" />
+      <trkpt lat="49.99" lon="-123.38" />
+      <trkpt lat="50.128" lon="-123.515" />
+    </trkseg>
+  </trk>
+</gpx>

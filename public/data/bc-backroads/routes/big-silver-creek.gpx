@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>LM-13 · Big Silver Creek beaches</name>
+    <desc>One of the Harrison area’s most approachable introduction rides, with current rockfall caution near km 13. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Big Silver Creek beaches</name>
+    <type>candidate</type>
+    <extensions>
+      <bcbr:routeId>LM-13</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>3</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="49.3" lon="-121.78" />
+      <trkpt lat="49.48" lon="-121.74" />
+      <trkpt lat="49.59" lon="-121.75" />
+    </trkseg>
+  </trk>
+</gpx>

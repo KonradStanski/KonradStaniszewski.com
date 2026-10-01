@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>LM-07 · Callaghan Lake FSR</name>
+    <desc>Short rough-gravel approach to Callaghan Lake with a legal annual motorized closure and possible late snow. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Callaghan Lake FSR</name>
+    <type>spur</type>
+    <extensions>
+      <bcbr:routeId>LM-07</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>3</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="50.115" lon="-123.12" />
+      <trkpt lat="50.173" lon="-123.148" />
+      <trkpt lat="50.218" lon="-123.185" />
+    </trkseg>
+  </trk>
+</gpx>

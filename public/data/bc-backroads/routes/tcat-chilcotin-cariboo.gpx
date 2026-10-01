@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>RI-03 · TCAT Chilcotin–Cariboo</name>
+    <desc>Quesnel–Farwell Canyon–Gang Ranch–Big Bar–Lillooet–Anderson Lake–Pemberton through remote ranch country. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>TCAT Chilcotin–Cariboo</name>
+    <type>primary</type>
+    <extensions>
+      <bcbr:routeId>RI-03</bcbr:routeId>
+      <bcbr:geometryPolicy>link-only</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>7</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="52.979" lon="-122.494" />
+      <trkpt lat="52.13" lon="-122.14" />
+      <trkpt lat="51.68" lon="-122.49" />
+      <trkpt lat="51.35" lon="-121.98" />
+      <trkpt lat="50.69" lon="-121.95" />
+      <trkpt lat="50.72" lon="-122.5" />
+      <trkpt lat="50.32" lon="-122.805" />
+    </trkseg>
+  </trk>
+</gpx>

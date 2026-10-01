@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>VI-17 · Tansky ORV area</name>
+    <desc>Approximately 1,000 hectares of signed south-Island motorcycle terrain from novice to hard enduro. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Tansky ORV area</name>
+    <type>trail-system</type>
+    <extensions>
+      <bcbr:routeId>VI-17</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>4</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="48.43" lon="-124" />
+      <trkpt lat="48.45" lon="-123.96" />
+      <trkpt lat="48.42" lon="-123.93" />
+      <trkpt lat="48.43" lon="-124" />
+    </trkseg>
+  </trk>
+</gpx>

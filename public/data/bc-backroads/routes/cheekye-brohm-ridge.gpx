@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>LM-06 · Cheekye / Brohm Ridge</name>
+    <desc>Steep, loose and water-barred riding ending at a legal vehicle gate near Brohm Ridge. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Cheekye / Brohm Ridge</name>
+    <type>spur</type>
+    <extensions>
+      <bcbr:routeId>LM-06</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>3</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="49.83" lon="-123.151" />
+      <trkpt lat="49.89" lon="-123.094" />
+      <trkpt lat="49.934" lon="-123.047" />
+    </trkseg>
+  </trk>
+</gpx>

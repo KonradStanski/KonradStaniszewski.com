@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>RI-17 · Settlers / Palliser / White River</name>
+    <desc>Official road approaches to Height of the Rockies trailheads; the park trails are not motorized continuations. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Settlers / Palliser / White River</name>
+    <type>spur</type>
+    <extensions>
+      <bcbr:routeId>RI-17</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>3</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="50.33" lon="-116.03" />
+      <trkpt lat="50.21" lon="-115.65" />
+      <trkpt lat="50.05" lon="-115.31" />
+    </trkseg>
+  </trk>
+</gpx>

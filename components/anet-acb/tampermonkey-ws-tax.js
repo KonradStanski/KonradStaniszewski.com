@@ -6,7 +6,7 @@
 // @match        https://my.wealthsimple.com/*
 // @match        https://app.wealthsimple.com/*
 // @grant        unsafeWindow
-// @run-at       document-idle
+// @run-at       document-end
 // @sandbox      JavaScript
 // ==/UserScript==
 

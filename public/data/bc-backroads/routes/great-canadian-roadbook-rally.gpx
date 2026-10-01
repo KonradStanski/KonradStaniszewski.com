@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>VI-16 · Great Canadian Roadbook Rally</name>
+    <desc>Five navigation routes based near Sayward; useful as a route source, with access changing quickly during fire season. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Great Canadian Roadbook Rally</name>
+    <type>candidate</type>
+    <extensions>
+      <bcbr:routeId>VI-16</bcbr:routeId>
+      <bcbr:geometryPolicy>link-only</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>5</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="50.04" lon="-125.95" />
+      <trkpt lat="50.18" lon="-126.2" />
+      <trkpt lat="50.08" lon="-126.5" />
+      <trkpt lat="49.93" lon="-126.2" />
+      <trkpt lat="50.04" lon="-125.95" />
+    </trkseg>
+  </trk>
+</gpx>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>RI-19 · Fernie–Flathead historic loop</name>
+    <desc>The classic Flathead–Corbin–Cabin–Wigwam loop is no longer continuous because of washouts and removed bridges. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Fernie–Flathead historic loop</name>
+    <type>constraint</type>
+    <extensions>
+      <bcbr:routeId>RI-19</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>5</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="49.5" lon="-115.06" />
+      <trkpt lat="49.28" lon="-114.91" />
+      <trkpt lat="49.18" lon="-114.65" />
+      <trkpt lat="49.52" lon="-114.78" />
+      <trkpt lat="49.5" lon="-115.06" />
+    </trkseg>
+  </trk>
+</gpx>

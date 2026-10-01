@@ -11,7 +11,18 @@ export const getMdx = (fileName: string) => {
   const fullPath = path.join(postsPath, fileName);
   const docSource = fs.readFileSync(fullPath, "utf-8");
   const { data, content } = matter(docSource);
-  data.date = new Date(data.date).toDateString();
+  const dateValue = String(data.date);
+  const localDate = data.date instanceof Date
+    ? new Date(
+        data.date.getUTCFullYear(),
+        data.date.getUTCMonth(),
+        data.date.getUTCDate(),
+        12
+      )
+    : /^\d{4}-\d{2}-\d{2}$/.test(dateValue)
+      ? new Date(`${dateValue}T12:00:00`)
+      : new Date(dateValue);
+  data.date = localDate.toDateString();
   return {
     frontMatter: {
       ...data,

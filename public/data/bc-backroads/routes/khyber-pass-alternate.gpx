@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>VI-14 · Khyber Pass alternate</name>
+    <desc>Technical North Island 1000 alternate between Campbell River and Gold River; never a default big-bike route. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Khyber Pass alternate</name>
+    <type>candidate</type>
+    <extensions>
+      <bcbr:routeId>VI-14</bcbr:routeId>
+      <bcbr:geometryPolicy>link-only</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>3</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="50.024" lon="-125.248" />
+      <trkpt lat="49.91" lon="-125.55" />
+      <trkpt lat="49.777" lon="-126.053" />
+    </trkseg>
+  </trk>
+</gpx>

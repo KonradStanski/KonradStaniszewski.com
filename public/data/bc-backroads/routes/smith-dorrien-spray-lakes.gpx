@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1"
+  creator="BC Backroads research map"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bcbr="https://konradstaniszewski.com/ns/bc-backroads/1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>RI-22 · Smith-Dorrien / Spray Lakes</name>
+    <desc>High-value gravel road from Canmore through Spray Lakes toward lower Kananaskis; not the bike-only Great Divide line. Coarse corridor geometry; not a turn-by-turn track. Verify land access, closures, gates, weather and field signage.</desc>
+    <time>2026-09-09T00:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Smith-Dorrien / Spray Lakes</name>
+    <type>primary</type>
+    <extensions>
+      <bcbr:routeId>RI-22</bcbr:routeId>
+      <bcbr:geometryPolicy>overview</bcbr:geometryPolicy>
+      <bcbr:geometrySource>Coarse corridor overview</bcbr:geometrySource>
+      <bcbr:pointCount>4</bcbr:pointCount>
+    </extensions>
+    <trkseg>
+      <trkpt lat="51.09" lon="-115.35" />
+      <trkpt lat="50.96" lon="-115.41" />
+      <trkpt lat="50.72" lon="-115.27" />
+      <trkpt lat="50.6" lon="-115.11" />
+    </trkseg>
+  </trk>
+</gpx>

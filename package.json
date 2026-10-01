@@ -2,9 +2,11 @@
   "name": "konradstaniszewski.com",
   "private": true,
   "scripts": {
+    "predev": "node ./scripts/copy-maplibre-worker.mjs",
     "dev": "next dev",
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "dev:watch": "next-remote-watch ./posts",
+    "prebuild": "node ./scripts/copy-maplibre-worker.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -22,7 +24,9 @@
     "d3": "^7.9.0",
     "date-fns": "^2.28.0",
     "gray-matter": "^4.0.3",
+    "katex": "^0.16.47",
     "leaflet": "^1.9.4",
+    "maplibre-gl": "^6.8.0",
     "next": "^16.2.1",
     "next-mdx-remote": "^6.0.0",
     "next-remote-watch": "^1.0.0",
@@ -42,9 +46,11 @@
     "react-p5": "^1.4.1",
     "recharts": "^3.8.0",
     "rehype-autolink-headings": "^7.1.0",
+    "rehype-katex": "^7.0.1",
     "rehype-prism-plus": "^2.0.2",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

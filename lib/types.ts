@@ -17,4 +17,5 @@ export type MDXFrontMatter = {
   description?: string;
   date: string;
   tags?: Array<string>;
+  layout?: "editorial" | "interactive";
 };

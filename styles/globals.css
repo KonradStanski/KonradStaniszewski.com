@@ -170,6 +170,12 @@ a.heading-link {
   @apply text-zinc-800 dark:text-zinc-100; /* Light mode: dark text, Dark mode: light text */
 }
 
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+
 /* Leaflet map styles */
 .leaflet-container {
   font-family: inherit;

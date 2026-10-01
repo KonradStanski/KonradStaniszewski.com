@@ -1,0 +1,1185 @@
+.app {
+  --ink: #151c20;
+  --ink-deep: #101619;
+  --ink-soft: #1d262a;
+  --line: #344044;
+  --line-soft: rgba(218, 225, 220, 0.16);
+  --paper: #efeee8;
+  --muted: #a9b1ae;
+  --muted-2: #7f8b88;
+  --amber: #eda01f;
+  --teal: #68a89b;
+  --danger: #df725e;
+  --sidebar-width: 380px;
+
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--ink-deep);
+  color: var(--paper);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.appSidebarCollapsed {
+  --sidebar-width: 58px;
+}
+
+.loadingState {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  background: #151c20;
+  color: #efeee8;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.loadingState h1 {
+  margin: 12px 0 0;
+  font-size: 22px;
+}
+
+.loadingState p {
+  margin: 0;
+  color: #a9b1ae;
+  font-size: 14px;
+}
+
+.loadingLine {
+  width: 180px;
+  height: 2px;
+  overflow: hidden;
+  background: #344044;
+}
+
+.loadingLine::after {
+  display: block;
+  width: 45%;
+  height: 100%;
+  animation: loadingSweep 1.1s ease-in-out infinite alternate;
+  background: #eda01f;
+  content: "";
+}
+
+@keyframes loadingSweep {
+  from {
+    transform: translateX(-15%);
+  }
+  to {
+    transform: translateX(140%);
+  }
+}
+
+.app :global(.srOnly),
+.loadingState :global(.srOnly) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.app :global(button),
+.app :global(input) {
+  font: inherit;
+}
+
+.app :global(button),
+.app :global(a) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app :global(button:focus-visible),
+.app :global(a:focus-visible),
+.app :global(input:focus-visible) {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+.app :global(.routeSidebar) {
+  position: relative;
+  z-index: 40;
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid #2e393d;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 26%),
+    var(--ink);
+  box-shadow: 7px 0 24px rgba(5, 11, 13, 0.18);
+}
+
+.app :global(.sidebarBrandBar) {
+  display: flex;
+  min-height: 91px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 21px 14px 16px 19px;
+  border-bottom: 1px solid transparent;
+}
+
+.app :global(.brandMark) {
+  display: grid;
+  grid-template-columns: 38px minmax(0, auto);
+  align-items: center;
+  column-gap: 10px;
+  color: var(--paper);
+}
+
+.app :global(.brandMark)::after {
+  grid-column: 1 / -1;
+  margin-top: 1px;
+  color: var(--muted);
+  content: "Adventure moto field map";
+  font-size: 12px;
+  letter-spacing: -0.01em;
+}
+
+.app :global(.brandMarkIcon),
+.loadingState :global(.brandMarkIcon) {
+  width: 38px;
+  color: var(--teal);
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.app :global(.brandMarkType),
+.loadingState :global(.brandMarkType) {
+  font-family: "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  font-size: 22px;
+  font-stretch: condensed;
+  font-weight: 800;
+  letter-spacing: 0.075em;
+  white-space: nowrap;
+}
+
+.loadingState :global(.brandMark) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loadingState :global(.brandMark)::after {
+  display: none;
+}
+
+.app :global(.sidebarCollapseButton),
+.app :global(.iconButton),
+.app :global(.mapToolButton) {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #d9ddda;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.app :global(.sidebarCollapseButton:hover),
+.app :global(.iconButton:hover),
+.app :global(.mapToolButton:hover) {
+  border-color: #62706f;
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+.app :global(.sidebarCollapseButton svg) {
+  transform: rotate(180deg);
+}
+
+.app :global(.sidebarCollapseButton .collapseChevronReversed) {
+  transform: rotate(0);
+}
+
+.app :global(.sidebarMobileClose) {
+  display: none;
+}
+
+.app :global(.sidebarExpandedContent) {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.app :global(.routeSidebarCollapsed .sidebarExpandedContent) {
+  display: none;
+}
+
+.app :global(.routeSidebarCollapsed .sidebarBrandBar) {
+  min-height: 100%;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 15px 9px;
+  gap: 18px;
+}
+
+.app :global(.routeSidebarCollapsed .brandMark) {
+  display: block;
+}
+
+.app :global(.routeSidebarCollapsed .brandMarkIcon) {
+  width: 38px;
+}
+
+.app :global(.routeSidebarCollapsed .brandMarkType),
+.app :global(.routeSidebarCollapsed .brandMark::after) {
+  display: none;
+}
+
+.app :global(.routeSidebarCollapsed .sidebarCollapseButton) {
+  order: -1;
+}
+
+.app :global(.sidebarExpandedContent > h1) {
+  margin: 4px 19px 9px;
+  color: #dce0dd;
+  font-family: "Arial Narrow", "Roboto Condensed", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.app :global(.routeSearch) {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  gap: 11px;
+  margin: 0 14px 13px;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--muted);
+}
+
+.app :global(.routeSearch:focus-within) {
+  border-color: #72807d;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.app :global(.routeSearch input) {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--paper);
+  font-size: 13px;
+}
+
+.app :global(.routeSearch input::placeholder) {
+  color: #9aa3a1;
+}
+
+.app :global(.routeSearch kbd) {
+  min-width: 23px;
+  padding: 2px 5px;
+  border: 1px solid #455054;
+  border-radius: 4px;
+  color: #99a3a1;
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-align: center;
+}
+
+.app :global(.regionTabs) {
+  display: grid;
+  grid-template-columns: 0.7fr 1.25fr 0.65fr 0.8fr;
+  gap: 4px;
+  padding: 0 14px 13px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.app :global(.regionTabs button) {
+  min-width: 0;
+  height: 32px;
+  padding: 0 5px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #aeb5b2;
+  cursor: pointer;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app :global(.regionTabs button:hover) {
+  background: rgba(255, 255, 255, 0.045);
+  color: #e4e7e4;
+}
+
+.app :global(.regionTabs .regionTabActive) {
+  background: #343d41;
+  color: #fff;
+}
+
+.app :global(.routeFilters) {
+  padding: 12px 17px 11px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.app :global(.sidebarSectionHeading) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  color: #aeb5b2;
+  font-size: 11px;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.app :global(.sidebarSectionHeading > span) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.app :global(.sidebarSectionHeading button) {
+  border: 0;
+  background: transparent;
+  color: #9da6a3;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.app :global(.sidebarSectionHeading button:hover) {
+  color: var(--paper);
+}
+
+.app :global(.routeFilterList) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 9px;
+}
+
+.app :global(.routeFilterList button) {
+  display: grid;
+  min-width: 0;
+  height: 30px;
+  grid-template-columns: 32px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #d7dbd8;
+  cursor: pointer;
+  font-size: 11.5px;
+  text-align: left;
+}
+
+.app :global(.routeFilterList button:hover) {
+  color: #fff;
+}
+
+.app :global(.routeFilterList .routeFilterDisabled) {
+  opacity: 0.42;
+}
+
+.app :global(.routeFilterCheck) {
+  display: inline-flex;
+  width: 17px;
+  height: 17px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #44625c;
+  border-radius: 4px;
+  background: #294d47;
+  color: #cfe0db;
+  font-size: 11px;
+}
+
+.app :global(.routeFilterDisabled .routeFilterCheck) {
+  border-color: #465054;
+  background: transparent;
+}
+
+.app :global(.routeLineSample) {
+  display: inline-block;
+  width: 30px;
+  height: 0;
+  flex: 0 0 auto;
+  border-top: 3px solid var(--sample-color);
+  border-radius: 5px;
+}
+
+.app :global(.routeLineSample_candidate),
+.app :global(.routeLineSample_constraint) {
+  border-top-style: dashed;
+}
+
+.app :global(.routeLineSample_spur),
+.app :global(.routeLineSample_trail-system) {
+  border-top-style: dotted;
+}
+
+.app :global(.routeListHeading) {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 17px;
+  border-bottom: 1px solid var(--line-soft);
+  color: #aeb5b2;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.app :global(.routeListHeading b) {
+  margin-left: 5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #293237;
+  color: #c4cbc8;
+  font-weight: 500;
+}
+
+.app :global(.routeList) {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: #495458 transparent;
+  scrollbar-width: thin;
+}
+
+.app :global(.routeList > button) {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 82px;
+  grid-template-columns: 34px minmax(0, 1fr) 20px;
+  align-items: start;
+  gap: 9px;
+  padding: 13px 15px 11px 19px;
+  border: 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: transparent;
+  color: #e8e9e5;
+  cursor: pointer;
+  text-align: left;
+  transition: background 140ms ease;
+}
+
+.app :global(.routeList > button:hover) {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.app :global(.routeList > button[aria-current="true"]) {
+  background: linear-gradient(90deg, rgba(237, 160, 31, 0.12), rgba(255, 255, 255, 0.035));
+  box-shadow: inset 3px 0 var(--amber);
+}
+
+.app :global(.routeList > button .routeLineSample) {
+  margin-top: 7px;
+}
+
+.app :global(.routeListRowBody) {
+  min-width: 0;
+}
+
+.app :global(.routeListRowBody strong) {
+  display: block;
+  margin-bottom: 4px;
+  overflow: hidden;
+  color: #f0f0eb;
+  font-family: "Arial Narrow", "Roboto Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.12;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app :global(.routeListRowBody > span),
+.app :global(.routeListRowBody > small) {
+  display: block;
+  overflow: hidden;
+  color: #aeb6b3;
+  font-size: 11px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app :global(.routeListRowBody > small) {
+  color: #d6a13b;
+}
+
+.app :global(.routeListRowBody > small i) {
+  color: #909a97;
+  font-style: normal;
+}
+
+.app :global(.routeList > button .routeRowChevron) {
+  margin-top: 2px;
+  color: #98a29f;
+}
+
+.app :global(.routeListEmpty) {
+  padding: 30px 20px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.app :global(.mapStage) {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #c7c8b5;
+}
+
+.app :global(.mapCanvasWrap),
+.app :global(.mapCanvas) {
+  position: absolute;
+  inset: 0;
+}
+
+.app :global(.mapCanvas .maplibregl-map) {
+  font-family: inherit;
+}
+
+.app :global(.maplibregl-ctrl-top-right) {
+  top: 14px;
+  right: 14px;
+}
+
+.app :global(.maplibregl-ctrl-group) {
+  overflow: hidden;
+  border: 1px solid rgba(28, 36, 39, 0.25);
+  border-radius: 7px;
+  box-shadow: 0 4px 16px rgba(17, 25, 27, 0.14);
+}
+
+.app :global(.maplibregl-ctrl-group button) {
+  width: 40px;
+  height: 40px;
+}
+
+.app :global(.maplibregl-ctrl-attrib) {
+  color: #283134;
+  font-size: 10px;
+}
+
+.app :global(.fieldMapControls) {
+  position: absolute;
+  z-index: 5;
+  top: 105px;
+  right: 14px;
+  display: grid;
+  gap: 7px;
+}
+
+.app :global(.mapToolButton) {
+  width: 41px;
+  height: 41px;
+  border-color: rgba(28, 36, 39, 0.25);
+  background: rgba(250, 249, 243, 0.96);
+  box-shadow: 0 4px 14px rgba(17, 25, 27, 0.14);
+  color: #232b2e;
+}
+
+.app :global(.mapToolButton:hover),
+.app :global(.mapToolButton[aria-pressed="true"]) {
+  border-color: #41504d;
+  background: #1c2528;
+  color: #f0a42b;
+}
+
+.app :global(.desktopRouteDetail) {
+  position: absolute;
+  z-index: 8;
+  top: 50%;
+  right: 88px;
+  width: min(300px, calc(100% - 190px));
+  transform: translateY(-50%);
+}
+
+.app :global(.routeDetail) {
+  overflow: hidden;
+  border: 1px solid rgba(219, 225, 220, 0.18);
+  border-radius: 9px;
+  background: rgba(19, 27, 30, 0.97);
+  box-shadow: 0 18px 45px rgba(8, 13, 15, 0.28);
+  color: #e8e9e4;
+}
+
+.app :global(.routeDetailHeader) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px 10px;
+}
+
+.app :global(.routeDetailTitle) {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+}
+
+.app :global(.routeDetailTitle h2) {
+  margin: 0;
+  overflow: hidden;
+  font-family: "Arial Narrow", "Roboto Condensed", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app :global(.routeDetailTitle .routeLineSample) {
+  width: 27px;
+  border-color: var(--amber);
+}
+
+.app :global(.iconButtonQuiet) {
+  width: 30px;
+  height: 30px;
+  border-color: transparent;
+  background: transparent;
+}
+
+.app :global(.routeDetailQuickFacts) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+  padding: 0 14px 12px;
+  border-bottom: 1px solid var(--line-soft);
+  color: #d5dad6;
+  font-size: 12px;
+}
+
+.app :global(.routeFactList) {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.app :global(.routeFactList > div) {
+  display: grid;
+  grid-template-columns: 98px minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
+}
+
+.app :global(.routeFactList dt) {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #aeb6b3;
+  font-size: 10px;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.app :global(.routeFactList dd) {
+  margin: 0;
+  color: #e3e6e2;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.app :global(.routeFactList .statusText) {
+  color: #e5aa39;
+}
+
+.app :global(.routeFactList .statusText_closed) {
+  color: #ea806d;
+}
+
+.app :global(.routeFactList .statusText_open-reported) {
+  color: #83b7a9;
+}
+
+.app :global(.routeDescription) {
+  margin: 0;
+  padding: 13px 14px 11px;
+  color: #d7dbd7;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.app :global(.routeDetailActions) {
+  display: grid;
+  gap: 7px;
+  padding: 0 14px 13px;
+}
+
+.app :global(.routeDetailActions a) {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.app :global(.routeDetailActions a:hover) {
+  color: #9ac7bd;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.app :global(.routeGeometryNote),
+.app :global(.routeDisclaimer) {
+  margin: 0;
+  padding: 9px 14px;
+  border-top: 1px solid var(--line-soft);
+  color: #8f9996;
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+
+.app :global(.routeDisclaimer) {
+  color: #aeb5b2;
+}
+
+.app :global(.hoverCard) {
+  position: absolute;
+  z-index: 12;
+  width: 264px;
+  pointer-events: none;
+  padding: 11px 13px 10px;
+  border: 1px solid rgba(222, 228, 224, 0.18);
+  border-radius: 7px;
+  background: rgba(19, 27, 30, 0.96);
+  box-shadow: 0 13px 32px rgba(8, 13, 15, 0.27);
+  color: #e9ebe7;
+}
+
+.app :global(.hoverCardTitle) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.app :global(.hoverCardTitle .routeLineSample) {
+  width: 24px;
+  border-color: var(--amber);
+}
+
+.app :global(.hoverCard strong) {
+  overflow: hidden;
+  font-family: "Arial Narrow", "Roboto Condensed", sans-serif;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app :global(.hoverCard > span),
+.app :global(.hoverCard > small) {
+  display: block;
+  color: #8e9996;
+  font-size: 10px;
+}
+
+.app :global(.hoverCard p) {
+  margin: 5px 0 2px;
+  color: #cfd5d1;
+  font-size: 11px;
+}
+
+.app :global(.hoverCard em) {
+  display: block;
+  margin-bottom: 5px;
+  color: #e5a83a;
+  font-size: 11px;
+  font-style: normal;
+}
+
+.app :global(.mapLegend) {
+  position: absolute;
+  z-index: 7;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  max-width: calc(100% - 160px);
+  flex-wrap: wrap;
+  gap: 10px 21px;
+  padding: 10px 14px;
+  border: 1px solid rgba(29, 38, 40, 0.18);
+  border-radius: 7px;
+  background: rgba(247, 246, 239, 0.9);
+  box-shadow: 0 7px 20px rgba(20, 27, 29, 0.12);
+  color: #2a3235;
+  font-size: 10.5px;
+  backdrop-filter: blur(8px);
+}
+
+.app :global(.mapLegend > span) {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.app :global(.mapLegend .routeLineSample) {
+  width: 25px;
+}
+
+.app :global(.mobileTopBar),
+.app :global(.mobileRouteSheet) {
+  display: none;
+}
+
+.app :global(.allGpxDownload) {
+  position: fixed;
+  z-index: 9;
+  top: 15px;
+  left: calc(var(--sidebar-width) + 18px);
+  padding: 7px 10px;
+  border: 1px solid rgba(31, 39, 41, 0.18);
+  border-radius: 6px;
+  background: rgba(249, 248, 242, 0.9);
+  box-shadow: 0 4px 14px rgba(18, 26, 28, 0.12);
+  color: #2c3638;
+  font-size: 10.5px;
+  text-decoration: none;
+  backdrop-filter: blur(7px);
+}
+
+.app :global(.allGpxDownload:hover) {
+  background: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 1080px) {
+  .app {
+    --sidebar-width: 340px;
+  }
+
+  .app :global(.desktopRouteDetail) {
+    right: 72px;
+    width: 282px;
+  }
+
+  .app :global(.routeFilterList) {
+    grid-template-columns: 1fr;
+  }
+
+  .app :global(.routeFilters) {
+    padding-top: 9px;
+    padding-bottom: 8px;
+  }
+
+  .app :global(.routeFilterList button) {
+    height: 25px;
+  }
+}
+
+@media (max-width: 760px) {
+  .app,
+  .appSidebarCollapsed {
+    --sidebar-width: 0px;
+    display: block;
+    position: relative;
+  }
+
+  .app :global(.mobileTopBar) {
+    position: absolute;
+    z-index: 35;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    height: 64px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 13px 0 15px;
+    border-bottom: 1px solid #2f393d;
+    background: rgba(16, 22, 25, 0.985);
+  }
+
+  .app :global(.mobileTopBar > div) {
+    display: flex;
+    gap: 6px;
+  }
+
+  .app :global(.mobileTopBar .brandMark) {
+    grid-template-columns: 31px auto;
+    column-gap: 8px;
+  }
+
+  .app :global(.mobileTopBar .brandMark::after) {
+    display: none;
+  }
+
+  .app :global(.mobileTopBar .brandMarkIcon) {
+    width: 31px;
+  }
+
+  .app :global(.mobileTopBar .brandMarkType) {
+    font-size: 18px;
+  }
+
+  .app :global(.mobileTopBar .iconButton) {
+    width: 40px;
+    height: 40px;
+    border-color: transparent;
+  }
+
+  .app :global(.mapStage) {
+    position: absolute;
+    top: 64px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+  }
+
+  .app :global(.routeSidebar) {
+    position: fixed;
+    z-index: 60;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(102%);
+    border: 0;
+    transition: transform 240ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+
+  .app :global(.routeSidebarMobileOpen) {
+    transform: translateY(0);
+  }
+
+  .app :global(.routeSidebarCollapsed .sidebarExpandedContent) {
+    display: flex;
+  }
+
+  .app :global(.routeSidebarCollapsed .sidebarBrandBar),
+  .app :global(.sidebarBrandBar) {
+    min-height: 68px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .app :global(.routeSidebarCollapsed .brandMark) {
+    display: grid;
+  }
+
+  .app :global(.routeSidebarCollapsed .brandMarkType) {
+    display: inline;
+  }
+
+  .app :global(.routeSidebarCollapsed .brandMark::after),
+  .app :global(.sidebarBrandBar .brandMark::after) {
+    display: none;
+  }
+
+  .app :global(.sidebarCollapseButton) {
+    display: none;
+  }
+
+  .app :global(.sidebarMobileClose) {
+    display: inline-flex;
+  }
+
+  .app :global(.sidebarExpandedContent > h1) {
+    margin-top: 16px;
+  }
+
+  .app :global(.routeFilterList) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .app :global(.routeFilterList button) {
+    height: 34px;
+  }
+
+  .app :global(.desktopRouteDetail),
+  .app :global(.mapLegend),
+  .app :global(.hoverCard),
+  .app :global(.allGpxDownload) {
+    display: none;
+  }
+
+  .app :global(.maplibregl-ctrl-top-right) {
+    top: 13px;
+    right: 9px;
+  }
+
+  .app :global(.maplibregl-ctrl-group button) {
+    width: 43px;
+    height: 43px;
+  }
+
+  .app :global(.fieldMapControls) {
+    top: 110px;
+    right: 9px;
+  }
+
+  .app :global(.mapToolButton) {
+    width: 44px;
+    height: 44px;
+  }
+
+  .app :global(.maplibregl-ctrl-bottom-right) {
+    right: 0;
+    bottom: 46vh;
+  }
+
+  .app :global(.mobileRouteSheet) {
+    position: fixed;
+    z-index: 30;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    max-height: 48vh;
+    overflow: hidden;
+    transform: translateY(calc(100% - 58px));
+    border-top: 1px solid rgba(237, 160, 31, 0.42);
+    border-radius: 17px 17px 0 0;
+    background: rgba(20, 27, 30, 0.985);
+    box-shadow: 0 -16px 38px rgba(7, 12, 14, 0.28);
+    transition: transform 220ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+
+  .app :global(.mobileRouteSheetOpen) {
+    transform: translateY(0);
+  }
+
+  .app :global(.mobileSheetHandle) {
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    display: grid;
+    width: 100%;
+    height: 58px;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 12px 18px 7px;
+    border: 0;
+    border-bottom: 1px solid var(--line-soft);
+    background: var(--ink);
+    color: #edece7;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .app :global(.mobileSheetHandle > span:first-child) {
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    width: 43px;
+    height: 4px;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    background: #737b79;
+  }
+
+  .app :global(.mobileSheetHandle > span:nth-child(2)) {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #e7c06b;
+  }
+
+  .app :global(.mobileSheetHandle > span:last-child) {
+    color: #c6cbc8;
+    text-align: right;
+  }
+
+  .app :global(.routeDetailCompact) {
+    max-height: calc(48vh - 58px);
+    overflow-y: auto;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .app :global(.routeDetailCompact .routeDetailHeader) {
+    padding: 15px 19px 8px;
+  }
+
+  .app :global(.routeDetailCompact .routeDetailTitle h2) {
+    color: #efb341;
+    font-size: 22px;
+  }
+
+  .app :global(.routeDetailCompact .routeDetailQuickFacts),
+  .app :global(.routeDetailCompact .routeFactList),
+  .app :global(.routeDetailCompact .routeDescription),
+  .app :global(.routeDetailCompact .routeDetailActions),
+  .app :global(.routeDetailCompact .routeGeometryNote),
+  .app :global(.routeDetailCompact .routeDisclaimer) {
+    padding-right: 19px;
+    padding-left: 19px;
+  }
+}
+
+@media (max-width: 390px) {
+  .app :global(.regionTabs) {
+    grid-template-columns: 0.7fr 1.1fr 0.65fr 0.75fr;
+  }
+
+  .app :global(.regionTabs button) {
+    font-size: 10px;
+  }
+
+  .app :global(.routeFilterList) {
+    grid-template-columns: 1fr;
+  }
+
+  .app :global(.mobileRouteSheet),
+  .app :global(.routeDetailCompact) {
+    max-height: 51vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app :global(*),
+  .app :global(*::before),
+  .app :global(*::after) {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -11,6 +11,8 @@ import { components } from "@/components/MDX";
 import { Prose } from "@/components/Prose";
 import { cx } from "@/lib/utils";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
@@ -97,8 +99,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { frontMatter, content } = post;
   const mdxContent = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm] as any,
+      remarkPlugins: [remarkGfm, [remarkMath, { singleDollarTextMath: false }]] as any,
       rehypePlugins: [
+        rehypeKatex,
         rehypePrism,
         rehypeSlug,
         [rehypeAutolinkHeadings, {
