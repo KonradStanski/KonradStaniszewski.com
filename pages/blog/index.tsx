@@ -10,13 +10,13 @@ interface PostsProps {
 
 const Posts: NextPage<PostsProps> = ({ posts }) => {
   return (
-    <>
+    <div className="blog-index">
       <Page
         title="Posts"
       >
         <PostList posts={posts} />
       </Page>
-    </>
+    </div>
   );
 };
 

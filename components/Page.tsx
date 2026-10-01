@@ -3,6 +3,7 @@ import { onlyText } from "react-children-utilities";
 import siteConfig from "@/data/siteConfig";
 import { Prose } from "@/components/Prose";
 import { cx } from "@/lib/utils";
+import { formatPostDate } from "@/lib/date";
 
 interface PageProps {
   date?: string;
@@ -42,42 +43,19 @@ export const Page: React.FC<PageProps> = ({
           content={`${siteConfig.siteUrl}${metaThumbnail}`}
         />
       </Head>
-      {!isInteractive ? <div
-        className={cx(
-          isEditorial ? "mb-12 pt-4 sm:mb-16 sm:pt-8" : "mb-4 border-b",
-          !isEditorial && "border-gray-200 dark:border-gray-700"
-        )}
-      >
-        <h1 className={cx(
-          "font-bold",
-          isEditorial
-            ? "max-w-4xl font-serif text-4xl leading-[1.04] tracking-[-0.035em] sm:text-6xl"
-            : "text-3xl"
-        )}>{title}</h1>
-        {date && !isEditorial ? (
-          <time
-            className={cx("block mb-2", "text-gray-500", "dark:text-gray-400")}
-          >
-            {date}
-          </time>
-        ) : null}
-        {description ? (
-          <div className={cx("mt-4 mb-2", isEditorial && "max-w-3xl text-lg sm:text-xl")}>
-            <Prose>
-              {typeof description === "string" ? (
-                <p>{description}</p>
-              ) : (
-                description
-              )}
-            </Prose>
-          </div>
-        ) : null}
-        {date && isEditorial ? (
-          <time className="mt-5 block text-sm text-gray-500 dark:text-gray-400">
-            {date}
-          </time>
-        ) : null}
-      </div> : null}
+      {!isInteractive ? (
+        <header className={cx("page-heading", isEditorial && "article-heading")}>
+          {date ? (
+            <time className="page-date" dateTime={formatPostDate(date).iso}>{formatPostDate(date).label}</time>
+          ) : null}
+          <h1>{title}</h1>
+          {description ? (
+            <div className="page-description">
+              {typeof description === "string" ? <p>{description}</p> : <Prose>{description}</Prose>}
+            </div>
+          ) : null}
+        </header>
+      ) : null}
       {children}
     </>
   );

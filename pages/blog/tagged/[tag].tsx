@@ -17,11 +17,11 @@ interface PostsProps {
 
 const Posts: NextPage<PostsProps> = ({ tag, posts }) => {
   return (
-    <>
+    <div className="blog-index">
       <Page title={`Posts tagged: "${tag}"`}>
         <PostList posts={posts} />
       </Page>
-    </>
+    </div>
   );
 };
 
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       tag,
       posts: mdxFiles.filter((file) => {
-        return file.tags?.includes(tag);
+        return file.tags?.some((value) => slugify(value) === tag);
       }),
     },
   };

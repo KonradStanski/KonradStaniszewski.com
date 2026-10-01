@@ -9,7 +9,6 @@ import { MDXFrontMatter } from "@/lib/types";
 import { Page } from "@/components/Page";
 import { components } from "@/components/MDX";
 import { Prose } from "@/components/Prose";
-import { cx } from "@/lib/utils";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -29,55 +28,29 @@ interface PostProps {
 
 const Post: NextPage<PostProps> = ({ frontMatter, mdx, previous, next }) => {
   return (
-    <>
-      <Page {...frontMatter}>
-        <Prose>
+    <article className="blog-post">
+      <Page {...frontMatter} layout={frontMatter.layout ?? "editorial"}>
+        <Prose article={frontMatter.layout !== "interactive"}>
           <MDXRemote {...mdx} components={components} />
         </Prose>
         {previous || next ? (
-          <nav
-            className={cx(
-              "mt-8 pt-8 grid grid-cols-2 gap-8 border-t",
-              "border-gray-200",
-              "dark:border-gray-700"
-            )}
-          >
+          <nav className="post-navigation" aria-label="Adjacent posts">
             {previous ? (
-              <div>
-                <p
-                  className={cx(
-                    "mb-2 uppercase tracking-wider text-sm",
-                    "text-gray-500",
-                    "dark:text-gray-400"
-                  )}
-                >
-                  Previous
-                </p>
-                <Link href={`/blog/${previous?.slug}`} className="font-bold">
-                  {previous?.title}
-                </Link>
-              </div>
+              <Link href={`/blog/${previous.slug}`} className="post-navigation-link">
+                <span className="post-navigation-label">Previous post</span>
+                <span>{previous.title}</span>
+              </Link>
             ) : null}
             {next ? (
-              <div className="col-start-2 text-right">
-                <p
-                  className={cx(
-                    "mb-2 uppercase tracking-wider text-sm",
-                    "text-gray-500",
-                    "dark:text-gray-400"
-                  )}
-                >
-                  Next
-                </p>
-                <Link href={`/blog/${next?.slug}`} className="font-bold">
-                  {next?.title}
-                </Link>
-              </div>
+              <Link href={`/blog/${next.slug}`} className="post-navigation-link post-navigation-next">
+                <span className="post-navigation-label">Next post</span>
+                <span>{next.title}</span>
+              </Link>
             ) : null}
           </nav>
         ) : null}
       </Page>
-    </>
+    </article>
   );
 };
 

@@ -6,7 +6,7 @@ const MARKET_BLUE = "#1557d5";
 const ACTIVE_AMBER = "#e89500";
 
 const panelClass = cx(
-  "not-prose my-10 overflow-hidden border-y py-6 sm:py-8",
+  "not-prose relative my-10 overflow-hidden border-y py-6 sm:py-8",
   "border-zinc-200 dark:border-zinc-700"
 );
 

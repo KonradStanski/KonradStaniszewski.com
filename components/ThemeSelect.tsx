@@ -1,99 +1,29 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Moon, Sun } from "react-feather";
 import posthog from "posthog-js";
-
 
 export const ThemeSelect = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  // After mounting, we have access to the theme
+  const { resolvedTheme, setTheme } = useTheme();
   useEffect(() => setMounted(true), []);
+  const isDark = resolvedTheme === "dark";
 
-  if (!mounted) return null;
-
-  function clickTheme() {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    posthog.capture('theme_toggled', { new_theme: newTheme });
+  function toggleTheme() {
+    const newTheme = isDark ? "light" : "dark";
+    posthog.capture("theme_toggled", { new_theme: newTheme });
     setTheme(newTheme);
   }
 
-  const isDark = theme === "dark";
-  const color = isDark ? "#fff" : "#000";
-  const maskColor = isDark ? "#000" : "#F9FAFB";
   return (
-    <button className="theme-button" type="button" aria-label="Toggle Dark Mode" onClick={clickTheme}>
-      <div className="moon-or-sun" />
-      <div className="moon-mask" />
-      <style>{`
-            .theme-button {
-                opacity: 0.5;
-                position: relative;
-                border-radius: 5px;
-                width: 42px;
-                height: 42px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: opacity 0.3s ease;
-            }
-            .theme-button:hover {
-                opacity: 1;
-            }
-            .moon-or-sun {
-                position: relative;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                border: ${isDark ? "4px" : "2px"} solid;
-                border-color: ${color};
-                background: ${color};
-                transform: scale(${isDark ? 0.5 : 1});
-                transition: all 0.45s ease;
-                overflow: ${isDark ? "visible" : "hidden"};
-            }
-            .moon-or-sun::before {
-                content: "";
-                position: absolute;
-                right: -9px;
-                top: -9px;
-                height: 20px;
-                width: 20px;
-                border: 2px solid;
-                border-color: ${color};
-                border-radius: 50%;
-                transform: translate(${isDark ? "14px, -14px" : "0, 0"});
-                opacity: ${isDark ? 0 : 1};
-                transition: transform 0.45s ease;
-            }
-            .moon-or-sun::after {
-                content: "";
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                margin: -4px 0 0 -4px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                box-shadow: 0 -23px 0 ${color}, 0 23px 0 ${color}, 23px 0 0 ${color}, -23px 0 0 ${color},
-                    15px 15px 0 ${color}, -15px 15px 0 ${color}, 15px -15px 0 ${color}, -15px -15px 0 ${color};
-                transform: scale(${isDark ? 1 : 0});
-                transition: all 0.35s ease;
-            }
-            .moon-mask {
-                position: absolute;
-                right: 4px;
-                top: 4px;
-                height: 20px;
-                width: 20px;
-                border-radius: 50%;
-                border: 0;
-                background: ${maskColor};
-                transform: translate(${isDark ? "4px, -4px" : "0, 0"});
-                opacity: ${isDark ? 0 : 1};
-                transition: transform 0.45s ease;
-            }
-        `}</style>
+    <button
+      className="theme-button"
+      type="button"
+      disabled={!mounted}
+      aria-label={mounted ? `Switch to ${isDark ? "light" : "dark"} mode` : "Change color theme"}
+      onClick={toggleTheme}
+    >
+      {mounted ? (isDark ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />) : <span className="h-5 w-5" />}
     </button>
   );
 };

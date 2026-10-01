@@ -1,3 +1,4 @@
+import type { ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 import { Note } from "./Note";
 import { Codepen } from "./Codepen";
@@ -30,7 +31,16 @@ import {
 } from "./MarketPrinciples";
 import { SmithManoeuvrePlanner } from "./SmithManoeuvrePlanner";
 import { MortgageRatePlanner } from "./MortgageRatePlanner";
+function ArticleTable(props: ComponentPropsWithoutRef<"table">) {
+  return (
+    <div className="table-scroll" role="region" aria-label="Scrollable table" tabIndex={0}>
+      <table {...props} />
+    </div>
+  );
+}
+
 export const components = {
+  table: ArticleTable,
   Image,
   Note,
   Codepen,

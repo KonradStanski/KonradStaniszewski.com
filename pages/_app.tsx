@@ -17,7 +17,7 @@ type LayoutAwareAppProps = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: LayoutAwareAppProps) {
-  const fullWidth = (Component as any).fullWidth;
+  const fullWidth = Component.fullWidth;
   const immersive = Component.immersive;
 
   if (immersive) {
@@ -37,14 +37,13 @@ function MyApp({ Component, pageProps }: LayoutAwareAppProps) {
       defaultTheme="system"
       attribute="class"
     >
-      <div className="flex flex-col max-w-5xl mx-auto px-4">
-        <Header />
-      </div>
-      <div className={fullWidth ? "px-4" : "max-w-5xl mx-auto px-4"}>
-        <Component {...pageProps} />
-      </div>
-      <div className="flex flex-col max-w-5xl mx-auto px-4">
-        <Footer />
+      <div className="site-layout">
+        <a href="#main-content" className="skip-link">Skip to content</a>
+        <div className="site-container"><Header /></div>
+        <main id="main-content" className={fullWidth ? "site-main site-main-wide" : "site-main site-container"}>
+          <Component {...pageProps} />
+        </main>
+        <div className="site-container"><Footer /></div>
       </div>
     </ThemeProvider>
   );

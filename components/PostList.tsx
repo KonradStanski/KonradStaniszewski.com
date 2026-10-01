@@ -1,64 +1,39 @@
 import Link from "next/link";
 import type { MDXFrontMatter } from "@/lib/types";
-import { Prose } from "@/components/Prose";
-import { cx, slugify } from "@/lib/utils";
+import { formatPostDate } from "@/lib/date";
+import { slugify } from "@/lib/utils";
 import { Tag } from "./Tag";
 
 interface PostListProps {
   posts: Array<MDXFrontMatter>;
 }
 
-export const PostList: React.FC<PostListProps> = ({ posts }) => {
-  return (
-    <ul
-      className={cx(
-        "divide-y",
-        "divide-gray-200",
-        "dark:divide-gray-700"
-      )}
-    >
-      {posts.map((post, index) => {
-        return (
-          <li className="py-2" key={index}>
-            <article>
-              <div className="flex flex-row justify-between">
-                <h2 className="font-bold text-xl">
-                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                </h2>
-                <time
-                  className={cx(
-                    "block",
-                    "text-gray-500",
-                    "dark:text-gray-400"
-                  )}
-                >
-                  {post.date}
-                </time>
-              </div>
-              <div className="flex flex-row justify-between items-start gap-4">
-                {post.description ? (
-                  <div className="min-w-0">
-                    <Prose>
-                      <p>{post.description}</p>
-                    </Prose>
-                  </div>
-                ) : null}
-                {post.tags ? (
-                  <ul className="mt-1 flex flex-wrap shrink-0 gap-1 justify-end">
-                    {post.tags.map((tag, index) => {
-                      return (
-                        <li key={index}>
-                          <Tag href={`/blog/tagged/${slugify(tag)}`}>{tag}</Tag>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                ) : null}
-              </div>
-            </article>
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
+export const PostList: React.FC<PostListProps> = ({ posts }) => (
+  <ul className="post-list">
+    {posts.map((post) => {
+      const date = formatPostDate(post.date);
+      return (
+        <li key={post.slug}>
+          <article className="post-preview">
+            <time dateTime={date.iso} className="post-preview-date">{date.label}</time>
+            <div className="min-w-0">
+              <h2 className="post-preview-title">
+                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+              </h2>
+              {post.description ? <p className="post-preview-description">{post.description}</p> : null}
+              {post.tags?.length ? (
+                <ul className="post-tags" aria-label="Topics">
+                  {post.tags.map((tag) => (
+                    <li key={tag}>
+                      <Tag href={`/blog/tagged/${slugify(tag)}`}>{tag}</Tag>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          </article>
+        </li>
+      );
+    })}
+  </ul>
+);
